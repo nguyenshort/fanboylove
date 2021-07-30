@@ -24,6 +24,11 @@
                             <div class="item-summary">
                                 <div class="post-title font-title">
                                     <h3 class="h5">
+                                        <% if (story.badge) {%>
+                                            <span class="manga-title-badges <%= story.badge.toLowerCase() %>">
+                                                <%= story.badge %>
+                                            </span>
+                                        <%} %>
                                         <a href="/truyen-tranh/<%= story.slug %>.<%= story._id %>">
                                             <%= story.title %>
                                         </a>

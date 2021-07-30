@@ -17,6 +17,7 @@ type Story {
     otherTitle: String
     author: String
     team: String
+    badge: String
 }
 
 type Category {
@@ -44,24 +45,4 @@ type Chapter {
 type StoryAndChapter {
     story: Story
     chapters: [Chapter]
-}
-
-
-type Query {
-    getStory(id: Float!): Story
-    getStories(order: String!, page: Int!, limit: Int!): [Story]
-
-    getBooksWithChapter(order: String!, page: Int!, limit: Int!): [StoryAndChapter]
-    getChapters(id: Float!): [Chapter]
-
-
-    getCategory(id: Float!): Category
-    getCategories: [Category]
-    categoryToBooksAndChapters(id: Float!, order: String!, page: Int!, limit: Int!): [StoryAndChapter]
-    categoryToCountStory(id: Float!): Int
-
-    quickSearch(keyword: String!, size: Int!): [Story]
-    getSearch(keyword: String!, page: Int!, limit: Int!): [StoryAndChapter]
-
-    getChapter(id: Float!): Chapter
 }

@@ -32,7 +32,11 @@
                 </div>
 
                 <div class="post-title">
-                    <span class="manga-title-badges hot">HOT</span>
+                    <% if (story.badge) {%>
+                        <span class="manga-title-badges <%= story.badge.toLowerCase() %>">
+                            <%= story.badge %>
+                        </span>
+                    <%} %>
                     <h1><%= story.title %></h1>
                 </div>
                 <div class="tab-summary ">

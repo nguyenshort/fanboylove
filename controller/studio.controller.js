@@ -119,7 +119,8 @@ class StudioController {
     avatar,
     content,
     adsense,
-    listCategories
+    listCategories,
+    badge
   ) {
     this._validateStoryForm(title, team, avatar)
     const categories = await this._makeListCategories(listCategories)
@@ -132,6 +133,7 @@ class StudioController {
       content,
       adsense,
       categories,
+      badge,
       user: this.user._id,
       createdAt: Date.now(),
       updatedAt: Date.now()
@@ -147,7 +149,8 @@ class StudioController {
     avatar,
     content,
     adsense,
-    listCategories
+    listCategories,
+    badge
   ) {
     this._validateStoryForm(title, team, avatar)
     const categories = await this._makeListCategories(listCategories)
@@ -166,6 +169,7 @@ class StudioController {
         avatar: this._getAvatarPath(avatar),
         content,
         adsense,
+        badge,
         categories,
         updatedAt: Date.now()
       }

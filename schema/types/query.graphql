@@ -1,0 +1,28 @@
+type Query {
+    "Studio"
+    getCategories: [Category]
+
+    "Studio - lấy nội dung private"
+    myStories(order: String! sort: Int! page: Int! limit: Int!): [Story]
+    myStory(id: Float!): Story
+    myChapter(id: Float!): Chapter
+    countStories: Int
+    searchMyStories(keyword: String! size: Int!): [Story]
+    getChapters(id: Float!): [Chapter]
+
+    "User"
+    me: User
+}
+
+type Mutation {
+    "Login action"
+    signupUser(name: String!, email: String!, password: String!): Token!
+    signinUser(email: String!, password: String!): Token!
+
+    "Studio"
+    publishStory(input: StoryForm!): Story
+    publishChapter(input: ChapterForm): Chapter
+    deleteStory(_id: Float!): Story
+    deleteChapter(_id: Float!): Chapter
+    sortMyChapters(_id: Float! ids: [Float!]): Boolean
+}

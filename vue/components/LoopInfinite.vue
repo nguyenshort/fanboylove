@@ -25,6 +25,9 @@
             <div class="item-summary">
               <div class="post-title font-title">
                 <h3 class="h5">
+                  <span v-if="item.story.badge" class="manga-title-badges <%= story.badge.toLowerCase() %>">
+                        {{ item.story.badge }}
+                  </span>
                   <a :href="`/truyen-tranh/${item.story.slug}.${item.story._id}`" :title="item.story.title">
                     {{ item.story.title }}
                   </a>

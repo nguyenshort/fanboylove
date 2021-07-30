@@ -37,6 +37,11 @@ const BookSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  badge: {
+    type: String,
+    default: '',
+    index: true
+  },
   adsense: {
     type: Boolean,
     default: true

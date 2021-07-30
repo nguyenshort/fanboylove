@@ -41,7 +41,8 @@ module.exports = {
           avatar,
           content,
           adsense,
-          categories
+          categories,
+          badge
         }
       },
       { user }
@@ -57,7 +58,8 @@ module.exports = {
           avatar,
           content,
           adsense,
-          categories
+          categories,
+          badge
         )
       } else {
         return studioController.createStory(
@@ -68,7 +70,8 @@ module.exports = {
           avatar,
           content,
           adsense,
-          categories
+          categories,
+          badge
         )
       }
     },

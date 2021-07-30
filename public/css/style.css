@@ -9186,3 +9186,7 @@ body.modal-open #frm-wp-manga-buy-coin.modal .modal-content .button.btn-cancel{b
 
 body.modal-open #frm-wp-manga-buy-coin.modal .modal-content .modal-footer{padding: 20px}
 #frm-wp-manga-buy-coin .coin{color:#FF0000; font-size:1.5em}
+
+.manga-title-badges:empty {
+  display: none;
+}

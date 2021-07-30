@@ -10,13 +10,3 @@ type User {
 type Token {
     token: String!
 }
-
-type Mutation {
-    "Login action"
-    signupUser(name: String!, email: String!, password: String!): Token!
-    signinUser(email: String!, password: String!): Token!
-}
-
-type Query {
-    me: User
-}
