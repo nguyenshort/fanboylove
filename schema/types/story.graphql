@@ -1,0 +1,67 @@
+type Story {
+    _id: Float
+    title: String
+    slug: String
+    avatar: String
+    source: String
+    adsense: Boolean
+    content: String
+    user: User
+    countChapter: Int
+    rating: Float
+    views: Float
+    categories: [Category]
+    updatedAt: Float
+    createdAt: Float
+
+    otherTitle: String
+    author: String
+    team: String
+}
+
+type Category {
+    _id: Float
+    name: String
+    slug: String
+}
+
+scalar Object
+
+type Chapter {
+    _id: Float
+    name: String
+    nameExtend: String
+    avatar: String
+    source: String
+    slug: String
+    story: Story
+    views: Float
+    order: Int
+    content: Object
+    createdAt: Float
+}
+
+type StoryAndChapter {
+    story: Story
+    chapters: [Chapter]
+}
+
+
+type Query {
+    getStory(id: Float!): Story
+    getStories(order: String!, page: Int!, limit: Int!): [Story]
+
+    getBooksWithChapter(order: String!, page: Int!, limit: Int!): [StoryAndChapter]
+    getChapters(id: Float!): [Chapter]
+
+
+    getCategory(id: Float!): Category
+    getCategories: [Category]
+    categoryToBooksAndChapters(id: Float!, order: String!, page: Int!, limit: Int!): [StoryAndChapter]
+    categoryToCountStory(id: Float!): Int
+
+    quickSearch(keyword: String!, size: Int!): [Story]
+    getSearch(keyword: String!, page: Int!, limit: Int!): [StoryAndChapter]
+
+    getChapter(id: Float!): Chapter
+}

@@ -1,0 +1,41 @@
+type Query {
+    myStories(order: String! sort: Int! page: Int! limit: Int!): [Story]
+
+    myStory(id: Float!): Story
+    myChapter(id: Float!): Chapter
+
+    countStories: Int
+
+    searchMyStories(keyword: String! size: Int!): [Story]
+}
+
+input StoryForm{
+    _id: Float
+    title: String!
+    otherTitle: String
+    author: String
+    team: String!
+    avatar: String!
+    content: String
+    adsense: Boolean
+    categories: [String]
+}
+
+input ChapterForm {
+    _id: Float
+    story: Float!
+    name: String!
+    avatar: String
+    content: Object!
+    nameExtend: String
+}
+
+type Mutation {
+    publishStory(input: StoryForm!): Story
+    publishChapter(input: ChapterForm): Chapter
+
+    deleteStory(_id: Float!): Story
+    deleteChapter(_id: Float!): Chapter
+
+    sortMyChapters(_id: Float! ids: [Float!]): Boolean
+}
