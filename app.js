@@ -18,7 +18,7 @@ const limiter = rateLimit({
 })
 
 //  apply to all requests
-app.use(limiter)
+// app.use(limiter)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -62,5 +62,5 @@ app.use(function (req, res) {
   return res.status(404).render('error')
 })
 
-// require('./jobs')
+require('./jobs')
 module.exports = app

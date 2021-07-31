@@ -1,12 +1,14 @@
 const Story = require('../models/Story')
 const Chapter = require('../models/Chapter')
+const STORY = require('../config/chapter')
+
 class ChapterController {
   async getMany(story) {
-    return Chapter.find({ story }).sort({ order: -1 })
+    return Chapter.find({ story, postActive: STORY.ACTIVE }).sort({ order: -1 })
   }
 
   async getOne(_id) {
-    const chapter = await Chapter.findOne({ _id })
+    const chapter = await Chapter.findOne({ _id, postActive: STORY.ACTIVE })
     if (!chapter) {
       return null
     }
@@ -18,7 +20,10 @@ class ChapterController {
   }
 
   static async forSiteMap() {
-    return Chapter.find({}, { _id: 1, slug: 1, story: 1 }).populate({
+    return Chapter.find(
+      { postActive: STORY.ACTIVE },
+      { _id: 1, slug: 1, story: 1 }
+    ).populate({
       path: 'story',
       model: Story,
       select: '_id slug'

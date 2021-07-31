@@ -8,7 +8,7 @@ type Query {
     myChapter(id: Float!): Chapter
     countStories: Int
     searchMyStories(keyword: String! size: Int!): [Story]
-    getChapters(id: Float!): [Chapter]
+    myChapters(id: Float!): [Chapter]
 
     "User"
     me: User
@@ -22,6 +22,7 @@ type Mutation {
     "Studio"
     publishStory(input: StoryForm!): Story
     publishChapter(input: ChapterForm): Chapter
+
     deleteStory(_id: Float!): Story
     deleteChapter(_id: Float!): Chapter
     sortMyChapters(_id: Float! ids: [Float!]): Boolean

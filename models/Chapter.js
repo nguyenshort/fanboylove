@@ -16,6 +16,11 @@ const ChapterSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  postActive: {
+    type: Number,
+    default: 1,
+    index: true
+  },
   slug: {
     type: String,
     slug: ['name', 'nameExtend'],
@@ -40,6 +45,11 @@ const ChapterSchema = new mongoose.Schema({
     required: true
   },
   createdAt: {
+    type: Number,
+    default: Date.now(),
+    index: true
+  },
+  publishTime: {
     type: Number,
     default: Date.now(),
     index: true

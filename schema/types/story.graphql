@@ -20,14 +20,6 @@ type Story {
     badge: String
 }
 
-type Category {
-    _id: Float
-    name: String
-    slug: String
-}
-
-scalar Object
-
 type Chapter {
     _id: Float
     name: String
@@ -40,7 +32,17 @@ type Chapter {
     order: Int
     content: Object
     createdAt: Float
+    postActive: Int
+    publishTime: Float
 }
+
+type Category {
+    _id: Float
+    name: String
+    slug: String
+}
+
+scalar Object
 
 type StoryAndChapter {
     story: Story

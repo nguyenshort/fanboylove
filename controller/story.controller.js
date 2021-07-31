@@ -2,6 +2,8 @@ const Story = require('../models/Story')
 const Chapter = require('../models/Chapter')
 const Category = require('../models/Category')
 
+const CHAPTER = require('../config/chapter')
+
 class StoryController {
   async getOne(_id) {
     return Story.findById({ _id }).populate([
@@ -33,7 +35,10 @@ class StoryController {
   async addChaptersToStory(stories, countChapter) {
     const result = []
     for (let story of stories) {
-      const chapters = await Chapter.find({ story: story._id })
+      const chapters = await Chapter.find({
+        story: story._id,
+        postActive: CHAPTER.ACTIVE
+      })
         .select('-content')
         .sort({ order: -1 })
         .limit(countChapter)

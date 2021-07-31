@@ -25,6 +25,11 @@ module.exports = {
     searchMyStories: async (_, { keyword, size }, { user }) => {
       const studioController = new StudioController(user)
       return studioController.searchStories(keyword, size)
+    },
+
+    myChapters: async (_, { id }, { user }) => {
+      const studioController = new StudioController(user)
+      return studioController.chapters(id)
     }
   },
 
@@ -78,7 +83,7 @@ module.exports = {
 
     publishChapter: async (
       _,
-      { input: { _id, name, content, avatar, story, nameExtend } },
+      { input: { _id, name, content, avatar, story, nameExtend, publishTime } },
       { user }
     ) => {
       const studioController = new StudioController(user)
@@ -88,7 +93,8 @@ module.exports = {
           name,
           nameExtend,
           avatar,
-          content
+          content,
+          publishTime
         )
       }
       return studioController.createChapter(
@@ -96,7 +102,8 @@ module.exports = {
         name,
         nameExtend,
         avatar,
-        content
+        content,
+        publishTime
       )
     },
 

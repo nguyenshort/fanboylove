@@ -7,6 +7,7 @@ const Category = require('../models/Category')
 
 const UserController = require('./user.controller')
 const BunnyCDN = require('../mixins/bunnyCDN')
+const CHAPTER = require('../config/chapter')
 
 class StudioController {
   constructor(user) {
@@ -111,6 +112,19 @@ class StudioController {
     }
   }
 
+  async chapters(story) {
+    const check = await this._basicStory(story)
+    if (!check) {
+      throw new ForbiddenError('Bạn không có quyền truy cập')
+    }
+    const chapters = await Chapter.find({ story }).sort({ order: -1 })
+    Object.values(chapters).map((chapter) => {
+      chapter.avatar = BunnyCDN.webAssets(chapter.avatar, false)
+      return chapter
+    })
+    return chapters
+  }
+
   async createStory(
     title,
     otherTitle,
@@ -210,7 +224,14 @@ class StudioController {
     }
   }
 
-  async createChapter(storyID, name, nameExtend, avatar, chapContent) {
+  async createChapter(
+    storyID,
+    name,
+    nameExtend,
+    avatar,
+    chapContent,
+    publishTime
+  ) {
     const story = await this.story(storyID)
     if (!story) {
       throw new ForbiddenError('Nội dung không tồn tại')
@@ -222,23 +243,34 @@ class StudioController {
     if (!content.length) {
       throw new ApolloError('Nội dung không được để trống', 'NOTIFY')
     }
+    if (publishTime && publishTime < Date.now()) {
+      throw new ApolloError('Lịch đăng không hợp lệ', 'NOTIFY')
+    }
     const chapter = await Chapter.create({
       name,
       avatar: avatar ? this._getAvatarPath(avatar) : '',
       content,
       nameExtend,
       story: story._id,
+      postActive: publishTime ? CHAPTER.SCHODULE : CHAPTER.ACTIVE,
+      publishTime: publishTime ? publishTime : Date.now(),
       order: await this._getNextOrder(story._id),
       createdAt: Date.now()
     })
-    await Story.findByIdAndUpdate(story._id, {
-      countChapter: await this._countChapter(story._id),
-      updatedAt: Date.now()
-    })
+    if (publishTime) {
+      await Story.findByIdAndUpdate(story._id, {
+        countChapter: await this._countChapter(story._id)
+      })
+    } else {
+      await Story.findByIdAndUpdate(story._id, {
+        countChapter: await this._countChapter(story._id),
+        updatedAt: Date.now()
+      })
+    }
     return chapter
   }
 
-  async updateChapter(_id, name, nameExtend, avatar, chapContent) {
+  async updateChapter(_id, name, nameExtend, avatar, chapContent, publishTime) {
     const chapter = await Chapter.findById(_id)
     if (!chapter) {
       throw new ForbiddenError('Nội dung không tồn tại')
@@ -254,6 +286,9 @@ class StudioController {
     if (!content.length) {
       throw new ApolloError('Nội dung không được để trống', 'NOTIFY')
     }
+    if (publishTime && chapter.postActive === CHAPTER.ACTIVE) {
+      throw new ApolloError('Không thể lên lịch chương đã đăng', 'NOTIFY')
+    }
     await Story.findByIdAndUpdate(chapter._id, { updatedAt: Date.now() })
     return Chapter.findByIdAndUpdate(
       chapter._id,
@@ -261,7 +296,9 @@ class StudioController {
         name,
         avatar: avatar ? this._getAvatarPath(avatar) : '',
         content,
-        nameExtend
+        nameExtend,
+        postActive: publishTime ? CHAPTER.SCHODULE : CHAPTER.ACTIVE,
+        publishTime: publishTime
       },
       { returnOriginal: false }
     )
