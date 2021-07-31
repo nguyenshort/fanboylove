@@ -15,7 +15,7 @@ TARGET_DIR=/
 UPLOADER_SCRIPT=/root/scripts/dropbox_uploader.sh
 
 # Name of the database
-DB_NAME=hinhgay
+DB_NAME=fanboylove
 
 function mongodb_dump
 {
