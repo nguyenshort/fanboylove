@@ -9099,6 +9099,7 @@ body.manga-page .page-content-listing.single-page .listing-chapters_wrap.cols-4 
 }
 .chapter-avatar {
   width: 150px;
+  height: 95px;
   border-radius: 4px;
   overflow: hidden;
   display: inline-block;
