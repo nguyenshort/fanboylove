@@ -4,10 +4,21 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const path = require('path')
+const rateLimit = require('express-rate-limit')
 
 const apolloServer = require('./schema')
 
 const app = express()
+
+app.set('trust proxy', 1)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 1 hour window
+  max: 5, // start blocking after 5 requests
+  message: 'Fanboylove api busy times'
+})
+
+//  apply to all requests
+app.use(limiter)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

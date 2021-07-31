@@ -55,7 +55,7 @@ class AuthController {
   createToken() {
     const { _id, email } = this.user
     return jwt.sign({ _id, email }, process.env.SECRET, {
-      expiresIn: '365d'
+      expiresIn: '7d'
     })
   }
 
