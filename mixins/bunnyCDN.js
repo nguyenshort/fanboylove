@@ -26,7 +26,8 @@ class BunnyCDN {
     if (!secure) {
       return process.env.CDN_DOMAIN_2 + url
     }
-    const expires = Math.floor(new Date() / 1000) + 3600
+    return process.env.CDN_DOMAIN + url
+    /*const expires = Math.floor(new Date() / 1000) + 3600
     const hashableBase = process.env.BUNNY_SECURITY_KEY + url + expires
     let token = Buffer.from(
       crypto.createHash('sha256').update(hashableBase).digest()
@@ -38,7 +39,7 @@ class BunnyCDN {
       .replace(/=/g, '')
     return (
       process.env.CDN_DOMAIN + url + '?token=' + token + '&expires=' + expires
-    )
+    )*/
   }
 }
 
