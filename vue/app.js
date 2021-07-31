@@ -1,5 +1,7 @@
 const Vue = require('vue')
 
+Vue.config.devtools = false
+
 const Axios = require('axios')
 Vue.prototype.$http = Axios
 
