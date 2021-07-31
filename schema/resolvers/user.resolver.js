@@ -3,6 +3,7 @@ const AuthController = require('../../controller/auth.controller')
 module.exports = {
   Query: {
     me: (_, {}, { user }) => {
+      console.log(user)
       return user
     }
   },

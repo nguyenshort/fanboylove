@@ -10,12 +10,7 @@ const apolloServer = require('./schema')
 
 const app = express()
 
-app.set('trust proxy', 1)
-const limiter = rateLimit({
-  windowMs: 3 * 60 * 1000, // 15 hour window
-  max: 20, // start blocking after 5 requests
-  message: 'Fanboylove api busy times'
-})
+apolloServer.applyMiddleware({ app })
 
 //  apply to all requests
 // app.use(limiter)
@@ -25,8 +20,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
-
-apolloServer.applyMiddleware({ app })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
