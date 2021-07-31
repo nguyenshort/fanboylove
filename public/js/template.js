@@ -266,4 +266,44 @@ $(document).ready(function () {
       window.location.reload()
     })
   })
+
+  $('.slider__container').each(function () {
+    $(this).slick({
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: parseInt($(this).attr('show')) || 0,
+      autoplay: true,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            centerMode: false,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 660,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            variableWidth: false,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            variableWidth: false
+          }
+        }
+      ]
+    })
+  })
 })
