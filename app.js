@@ -12,7 +12,7 @@ const app = express()
 
 app.set('trust proxy', 1)
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 1 hour window
+  windowMs: 3 * 60 * 1000, // 15 hour window
   max: 5, // start blocking after 5 requests
   message: 'Fanboylove api busy times'
 })
