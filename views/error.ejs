@@ -1,6 +1,15 @@
 <html lang="en-US">
 
-<%- include('includes/head', { title: 'Trang Chủ', description: 'Đọc truyện tranh đam mỹ online - Truyện gì cũng có', seo_image: process.env.DOMAIN + '/images/share.jpg' }); -%>
+<%- include(
+        'includes/head',
+        {
+            title: 'Trang Chủ',
+            description: 'Đọc truyện tranh đam mỹ online - Truyện gì cũng có',
+            seo_image: process.env.DOMAIN + '/images/share.jpg',
+            showAds: true
+        }
+    );
+-%>
 
 
 <body class="page">

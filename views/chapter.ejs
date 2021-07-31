@@ -5,7 +5,8 @@
         {
             title: chapter.name + ' | ' +story.title,
             description: '❶❶✅ Đọc truyện tranh ' + story.title + ' ' + chapter.name + ' bản dịch Full mới nhất, ảnh đẹp chất lượng cao tại ' + process.env.DOMAIN,
-            seo_image: webAssets(story.avatar)
+            seo_image: webAssets(story.avatar),
+            showAds: story.adsense
         }
     );
 -%>
