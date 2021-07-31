@@ -1,9 +1,9 @@
 <template>
   <div class="page-content-listing item-default" id="loop-listing">
     <div
-        v-for="(group, index) in listStories"
-        :key="index"
-        class="page-listing-item"
+      v-for="(group, index) in listStories"
+      :key="index"
+      class="page-listing-item"
     >
       <div class="row row-eq-height">
         <div v-for="(item, index2) in group" :key="index2" class="col-12 col-md-6">
@@ -11,14 +11,14 @@
             <div class="item-thumb hover-details c-image-hover">
               <a :href="`/truyen-tranh/${item.story.slug}.${item.story._id}`" :title="item.story.title">
                 <img
-                    width="110"
-                    height="150"
-                    :data-src="item.story.avatar"
-                    data-sizes="(max-width: 110px) 100vw, 110px"
-                    class="img-responsive effect-fade lazyload"
-                    src="https://live.mangabooth.com/wp-content/uploads/2017/10/wallhaven-550105-110x150.jpg"
-                    style="padding-top:150px;"
-                    alt="wallhaven-550105"
+                  width="110"
+                  height="150"
+                  :data-src="item.story.avatar"
+                  data-sizes="(max-width: 110px) 100vw, 110px"
+                  class="img-responsive effect-fade lazyload"
+                  src="https://live.mangabooth.com/wp-content/uploads/2017/10/wallhaven-550105-110x150.jpg"
+                  style="padding-top:150px;"
+                  alt="wallhaven-550105"
                 />
               </a>
             </div>
@@ -45,20 +45,25 @@
               </div>
               <div class="list-chapter">
                 <div
-                    v-for="(chapter, index2) in item.chapters"
-                    :key="index2"
-                    class="chapter-item"
+                  v-for="(chapter, index2) in item.chapters"
+                  :key="index2"
+                  class="chapter-item"
                 >
                   <span class="chapter font-meta">
                     <a
-                        :href="`/truyen-tranh/${item.story.slug}.${item.story._id}/${chapter.slug}.${chapter._id}`"
-                        class="btn-link"
+                      :href="`/truyen-tranh/${item.story.slug}.${item.story._id}/${chapter.slug}.${chapter._id}`"
+                      class="btn-link"
                     >
                       {{ chapter.name }}
                     </a>
                   </span>
                   <span class="post-on font-meta">
-                    {{ formatTime(chapter.createdAt) }}
+                    <span v-if="Date.now() < chapter.createdAt + 259200000" class="c-new-tag">
+                      <img src="/images/new.gif"  alt=""/>
+                    </span>
+                    <span v-else>
+                      {{ formatTime(chapter.createdAt) }}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -69,13 +74,13 @@
     </div>
     <nav class="navigation-ajax">
       <a
-          href="javascript:void(0)"
-          id="navigation-ajax"
-          class="btn btn-default load-ajax"
-          :class="{
+        href="javascript:void(0)"
+        id="navigation-ajax"
+        class="btn btn-default load-ajax"
+        :class="{
                   'show-loading': isLoading
                  }"
-          @click="getStories()"
+        @click="getStories()"
       >
         <div class="load-title">
           XEM THÊM
@@ -90,7 +95,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 
 export default {
   name: "LoopInfinite",
@@ -101,7 +106,8 @@ export default {
     },
     params: {
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     }
   },
   data() {
@@ -109,39 +115,39 @@ export default {
       isLoading: false,
       page: 1,
       stories: []
-    }
+    };
   },
   computed: {
     listStories() {
-      const list = []
+      const list = [];
       for (let index = 0; index < this.stories.length / 2; index++) {
-        list.push(this.stories.slice(index * 2, index * 2 + 2))
+        list.push(this.stories.slice(index * 2, index * 2 + 2));
       }
-      return list
+      return list;
     }
   },
   methods: {
     async getStories() {
-      this.isLoading = true
+      this.isLoading = true;
       try {
-        const {data} = await this.$http.get(
-            this.endpoint,
-            {
-              params: Object.assign({}, this.params, { page: this.page, limit: 8 })
-            }
-        )
+        const { data } = await this.$http.get(
+          this.endpoint,
+          {
+            params: Object.assign({}, this.params, { page: this.page, limit: 8 })
+          }
+        );
         if (data.length) {
-          this.stories.push(...data)
+          this.stories.push(...data);
         }
-        this.page++
+        this.page++;
       } catch (e) {
       }
-      this.isLoading = false
+      this.isLoading = false;
     },
 
     formatTime(time) {
-      return moment(time).locale('vi').format('ll')
+      return moment(time).locale("vi").format("ll");
     }
   }
-}
+};
 </script>

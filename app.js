@@ -47,5 +47,9 @@ app.use(aboutRoutes)
 
 app.use('/api', apiRouter)
 
+app.use(function (req, res) {
+  return res.status(404).render('error')
+})
+
 // require('./jobs')
 module.exports = app

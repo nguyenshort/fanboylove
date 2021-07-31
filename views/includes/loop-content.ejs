@@ -53,7 +53,13 @@
                                             </a>
                                         </span>
                                             <span class="post-on font-meta">
-                                                <%= moment(chapter.createdAt).locale('vi').format('ll') %>
+                                                <% if (Date.now() < chapter.createdAt + 259200000) {%>
+                                                    <span v-if="Date.now() < chapter.createdAt + 259200000" class="c-new-tag">
+                                                        <img src="/images/new.gif"  alt=""/>
+                                                    </span>
+                                                <%} else {%>
+                                                    <span><%= moment(chapter.createdAt).locale('vi').format('ll') %></span>
+                                                <%}%>
                                             </span>
                                         </div>
                                     <%} %>

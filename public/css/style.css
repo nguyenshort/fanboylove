@@ -9190,3 +9190,8 @@ body.modal-open #frm-wp-manga-buy-coin.modal .modal-content .modal-footer{paddin
 .manga-title-badges:empty {
   display: none;
 }
+.error-404-page img {
+  max-width: 400px;
+  margin: 50px auto;
+  display: block;
+}
