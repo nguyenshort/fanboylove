@@ -12,6 +12,13 @@ type Query {
 
     "User"
     me: User
+
+    "Queries App Front End"
+    getStoriesWithChapter(order: String!, page: Int!, limit: Int!): [StoryAndChapter]
+    getStoriesWithChapterByCategory(id: Float! order: String!, page: Int!, limit: Int!): [StoryAndChapter]
+    quickSearch(keyword: String!, size: Int!): [Story]
+    searchStoriesWithChapter(keyword: String!, page: Int!, limit: Int): [StoryAndChapter]
+    getStoriesRelated: [Story]
 }
 
 type Mutation {
@@ -19,10 +26,12 @@ type Mutation {
     signupUser(name: String!, email: String!, password: String!): Token!
     signinUser(email: String!, password: String!): Token!
 
+    "UserSettings"
+    userSettings(key: String!, value: String!): User
+
     "Studio"
     publishStory(input: StoryForm!): Story
     publishChapter(input: ChapterForm): Chapter
-
     deleteStory(_id: Float!): Story
     deleteChapter(_id: Float!): Chapter
     sortMyChapters(_id: Float! ids: [Float!]): Boolean

@@ -38,14 +38,14 @@
 
 <script>
 import moment from 'moment'
-import { GET_STORIES } from '../graphql/queries'
+import { SEARCH_STORY } from '../graphql/queries'
 import StoryItem from './includes/StoryItem.vue'
 
 export default {
   name: 'LoopInfinite',
   components: { StoryItem },
   props: {
-    order: {
+    keyword: {
       type: String,
       required: true
     }
@@ -71,17 +71,17 @@ export default {
       this.isLoading = true
       try {
         const {
-          data: { getStoriesWithChapter }
+          data: { searchStoriesWithChapter }
         } = await this.$apollo.query({
-          query: GET_STORIES,
+          query: SEARCH_STORY,
           variables: {
+            keyword: this.keyword,
             page: this.page,
-            order: this.order,
             limit: 8
           }
         })
-        if (getStoriesWithChapter.length) {
-          this.stories.push(...getStoriesWithChapter)
+        if (searchStoriesWithChapter.length) {
+          this.stories.push(...searchStoriesWithChapter)
         }
       } catch (e) {}
       this.page++

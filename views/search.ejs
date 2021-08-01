@@ -77,8 +77,7 @@
                                                 <% if (count) { %>
                                                     <div role="tabpanel" class="c-tabs-item">
                                                         <%- include('includes/loop-content', { stories }) -%>
-                                                        <loop-infinite :endpoint="'/api/search'"
-                                                                       :params="{ keyword: '<%= keyword %>' }"></loop-infinite>
+                                                        <search-infinite keyword="<%= keyword %>"></search-infinite>
                                                     </div>
                                                 <% } else { %>
                                                     <div class="no-chapter">

@@ -38,7 +38,7 @@
 
 <script>
 import moment from 'moment'
-import { GET_STORIES } from '../graphql/queries'
+import { GET_STORIES_BY_CATEGORY } from '../graphql/queries'
 import StoryItem from './includes/StoryItem.vue'
 
 export default {
@@ -46,6 +46,10 @@ export default {
   components: { StoryItem },
   props: {
     order: {
+      type: String,
+      required: true
+    },
+    category: {
       type: String,
       required: true
     }
@@ -71,17 +75,18 @@ export default {
       this.isLoading = true
       try {
         const {
-          data: { getStoriesWithChapter }
+          data: { getStoriesWithChapterByCategory }
         } = await this.$apollo.query({
-          query: GET_STORIES,
+          query: GET_STORIES_BY_CATEGORY,
           variables: {
+            id: parseInt(this.category),
             page: this.page,
             order: this.order,
             limit: 8
           }
         })
-        if (getStoriesWithChapter.length) {
-          this.stories.push(...getStoriesWithChapter)
+        if (getStoriesWithChapterByCategory.length) {
+          this.stories.push(...getStoriesWithChapterByCategory)
         }
       } catch (e) {}
       this.page++

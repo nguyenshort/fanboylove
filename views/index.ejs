@@ -38,7 +38,7 @@
                                         <div class="c-blog__inner">
                                             <div class="c-blog__content">
                                                 <%- include('includes/loop-content', { stories }) -%>
-                                                <loop-infinite :endpoint="'/api/stories'" :params="{ order: 'updatedAt' }"></loop-infinite>
+                                                <loop-infinite :endpoint="'/api/stories'" order="updatedAt"></loop-infinite>
                                             </div>
                                         </div>
                                     </div>

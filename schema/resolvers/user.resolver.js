@@ -1,4 +1,5 @@
 const AuthController = require('../../controller/auth.controller')
+const UserController = require('../../controller/user.controller')
 
 module.exports = {
   Query: {
@@ -17,6 +18,11 @@ module.exports = {
     signupUser: async (_, { name, email, password }) => {
       const authController = new AuthController()
       return authController.signup(name, email, password)
+    },
+
+    userSettings: async (_, { key, value }, { user }) => {
+      const userController = new UserController(user)
+      return userController.update(key, value)
     }
   }
 }

@@ -1,42 +1,44 @@
 <template>
   <form
-      id="blog-post-search"
-      class="ajax manga-search-form"
-      action="/tim-kiem"
-      method="get"
-      :class="{
-        isSearch: isLoading,
-        has_Result: stories.length
-      }"
+    id="blog-post-search"
+    class="ajax manga-search-form"
+    action="/tim-kiem"
+    method="get"
+    :class="{
+      isSearch: isLoading,
+      has_Result: quickSearch && quickSearch.length
+    }"
   >
     <input
-        type="text"
-        placeholder="Tìm Kiếm..."
-        name="keyword"
-        value=""
-        class="manga-search-field ui-autocomplete-input"
-        autocomplete="off"
-        :class="{
-          'ui-autocomplete-loading': isLoading
-        }"
-        v-model="keyword"
-        @keyup="search()"
-    >
-    <input type="submit" value="Search">
+      v-model="keyword"
+      type="text"
+      placeholder="Tìm Kiếm..."
+      name="keyword"
+      value=""
+      class="manga-search-field ui-autocomplete-input"
+      autocomplete="off"
+      :class="{
+        'ui-autocomplete-loading': isLoading
+      }"
+    />
+    <input type="submit" value="Search" />
     <div class="loader-inner line-scale">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
     </div>
     <div class="quick-searck-result">
       <div
-          v-for="(story, index) in stories"
-          :key="index"
-          class="quick-searck-item"
+        v-for="(story, index) in quickSearch"
+        :key="index"
+        class="quick-searck-item"
       >
-        <a :title="story.title" :href="`/truyen-tranh/${story.slug}.${story._id}`">
+        <a
+          :title="story.title"
+          :href="`/truyen-tranh/${story.slug}.${story._id}`"
+        >
           {{ story.title }}
         </a>
       </div>
@@ -45,33 +47,30 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce'
+import { QUICK_SEARCH } from '../graphql/queries'
 
 export default {
-  name: "SearchHeader",
+  name: 'SearchHeader',
   data() {
-    this.search = debounce(this.search, 800)
     return {
-      isLoading: false,
-      keyword: '',
-      stories: []
+      isLoading: 0,
+      keyword: ''
     }
   },
-  methods: {
-    async search() {
-      if (!this.keyword) {
-        return false
-      }
-      this.isLoading = true
-      try {
-         const { data } = await this.$http.get('/api/quick-search', {
-           params: {
-             keyword: this.keyword
-           }
-         })
-        this.stories = data
-      } catch (e) {}
-      this.isLoading = false
+  apollo: {
+    quickSearch: {
+      query: QUICK_SEARCH,
+      variables() {
+        return {
+          keyword: this.keyword,
+          size: 5
+        }
+      },
+      skip() {
+        return !this.keyword
+      },
+      loadingKey: 'isLoading',
+      debounce: 300
     }
   }
 }

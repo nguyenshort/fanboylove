@@ -76,7 +76,7 @@
                                             <div class="tab-content-wrap">
                                                 <div role="tabpanel" class="c-tabs-item">
                                                     <%- include('includes/loop-content', { stories }) -%>
-                                                    <loop-infinite :endpoint="'/api/stories'" :params="{ order: '<%= order || 'updatedAt' %>' }"></loop-infinite>
+                                                    <loop-infinite :endpoint="'/api/stories'" order="'<%= order || 'updatedAt' %>'"></loop-infinite>
                                                 </div>
                                             </div>
                                         </div>

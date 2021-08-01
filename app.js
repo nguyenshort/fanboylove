@@ -4,7 +4,6 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const path = require('path')
-const rateLimit = require('express-rate-limit')
 
 const apolloServer = require('./schema')
 
@@ -32,7 +31,6 @@ const aboutRoutes = require('./routes/about')
 
 const uploadRoutes = require('./routes/upload')
 const siteMapRoutes = require('./routes/sitemap')
-const apiRouter = require('./routes/api')
 
 app.use('/sitemap', siteMapRoutes)
 
@@ -48,8 +46,7 @@ app.use(homeRouter)
 app.use(storyRouter)
 app.use(categoryRouter)
 app.use(aboutRoutes)
-
-app.use('/api', apiRouter)
+app.use('/settings', require('./routes/settings'))
 
 app.use(function (req, res) {
   return res.status(404).render('error')

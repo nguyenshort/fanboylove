@@ -7,12 +7,17 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
-    ecmaVersion: 8,
+    ecmaVersion: 11,
     ecmaFeatures: {
       experimentalObjectRestSpread: true
-    }
+    },
+    sourceType: 'module'
   },
-  extends: ['prettier', 'plugin:prettier/recommended'],
+  extends: [
+    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:vue/recommended'
+  ],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
@@ -21,6 +26,7 @@ module.exports = {
     'vue/attribute-hyphenation': 'off',
     'dot-notation': 'off',
     'handle-callback-err': 'off',
-    'vue/no-v-html': 'off'
+    'vue/no-v-html': 'off',
+    'vue/max-attributes-per-line': 'off'
   }
 }
