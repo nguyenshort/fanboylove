@@ -47,8 +47,12 @@
                                                         CHƯƠNG MỤC
                                                     </h2>
                                                     <a href="javascript:void(0)" title="Change Order" class="btn-reverse-order">
-                                                        <i class="icon ion-md-swap"></i></a>
+                                                        <i class="icon ion-md-swap"></i>
+                                                    </a>
                                                 </div>
+                                                <% if (story.adsense) {%>
+                                                    <%- include('includes/ads') -%>
+                                                <%} %>
                                                 <% if (chapters.length) { %>
                                                     <%- include('story/list-chapter') -%>
                                                 <% } else { %>

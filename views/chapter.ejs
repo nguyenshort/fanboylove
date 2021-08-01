@@ -32,18 +32,27 @@
                                         <div class="entry-content">
                                             <div class="entry-content_wrap">
                                                 <div class="read-container">
+                                                    <% if (story.adsense) {%>
+                                                        <%- include('includes/ads') -%>
+                                                    <%} %>
                                                     <div class="reading-content">
-                                                        <% for (let image of chapter.content) {%>
+                                                        <% for (let i = 0; i < chapter.content.length; i++) {%>
                                                             <div>
                                                                 <img
-                                                                        data-src="<%= image.content %>"
+                                                                        data-src="<%= chapter.content[i].content %>"
                                                                         src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                                                         alt="<%= chapter.name %>"
                                                                         class="w-100 d-block lazyload chapter-img"
                                                                 >
                                                             </div>
+                                                            <% if (story.adsense && [15, 50, 75].includes(i)) {%>
+                                                                <%- include('includes/ads') -%>
+                                                            <%} %>
                                                         <%} %>
                                                     </div>
+                                                        <% if (story.adsense) {%>
+                                                            <%- include('includes/ads') -%>
+                                                        <%} %>
                                                 </div>
                                             </div>
                                         </div>
