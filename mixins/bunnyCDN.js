@@ -20,6 +20,9 @@ class BunnyCDN {
   }
 
   static webAssets(url, secure) {
+    if (/http|https/.test(url)) {
+      return url
+    }
     if (!url) {
       return ''
     }
