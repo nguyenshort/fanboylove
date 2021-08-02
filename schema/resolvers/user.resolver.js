@@ -23,6 +23,11 @@ module.exports = {
     userSettings: async (_, { key, value }, { user }) => {
       const userController = new UserController(user)
       return userController.update(key, value)
+    },
+
+    changePassword: async (_, { oldPass, newPass }, { user }) => {
+      const userController = new UserController(user)
+      return userController.changePassword(oldPass, newPass)
     }
   }
 }

@@ -28,6 +28,7 @@ type Mutation {
 
     "UserSettings"
     userSettings(key: String!, value: String!): User
+    changePassword(oldPass: String!, newPass: String): User
 
     "Studio"
     publishStory(input: StoryForm!): Story

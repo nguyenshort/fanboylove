@@ -263,7 +263,7 @@ $(document).ready(function () {
     button.addEventListener('click', (e) => {
       e.preventDefault()
       window.Cookies.remove('_token')
-      window.location.reload()
+      window.location = '/'
     })
   })
 

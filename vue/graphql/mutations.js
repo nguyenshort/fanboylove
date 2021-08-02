@@ -26,3 +26,11 @@ export const USER_SETTINGS = gql`
     }
   }
 `
+
+export const CHANGE_PASS = gql`
+  mutation changePassword($oldPass: String!, $newPass: String!) {
+    changePassword(oldPass: $oldPass, newPass: $newPass) {
+      _id
+    }
+  }
+`

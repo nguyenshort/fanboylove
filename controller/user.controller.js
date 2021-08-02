@@ -1,10 +1,7 @@
-const {
-  ApolloError,
-  ForbiddenError,
-  AuthenticationError
-} = require('apollo-server-express')
+const { ApolloError, AuthenticationError } = require('apollo-server-express')
 
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 class UserController {
   constructor(user) {
@@ -35,6 +32,29 @@ class UserController {
       return this._updateFeild('email', value)
     }
     return this.user
+  }
+
+  async changePassword(oldPass, newPass) {
+    const user = await User.findById(this.user._id)
+    const isValidPassword = await bcrypt.compare(oldPass, user.password)
+    if (!isValidPassword) {
+      throw new ApolloError('Mật khẩu không đúng', 'HAS_MESS')
+    }
+    if (newPass.length < 6) {
+      throw new ApolloError('Mật khẩu quá ngắn', 'HAS_MESS')
+    }
+
+    return bcrypt.hash(newPass, 10, (err, hash) => {
+      if (err) {
+        throw new ApolloError('Đã xảy ra lỗi', 'HAS_MESS')
+      }
+      return this._changePassword(hash)
+    })
+  }
+
+  // đổi password
+  async _changePassword(password) {
+    return User.findByIdAndUpdate(this.user._id, { password })
   }
 
   async _updateFeild(feild, value) {

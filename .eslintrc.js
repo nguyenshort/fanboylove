@@ -27,6 +27,7 @@ module.exports = {
     'dot-notation': 'off',
     'handle-callback-err': 'off',
     'vue/no-v-html': 'off',
-    'vue/max-attributes-per-line': 'off'
+    'vue/max-attributes-per-line': 'off',
+    'vue/html-indent': 'off'
   }
 }

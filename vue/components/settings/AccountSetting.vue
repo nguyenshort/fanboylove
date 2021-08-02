@@ -30,7 +30,7 @@
               type="submit"
               value="Cập Nhật"
               name="wp-manga-upload-avatar"
-              :disabled="!form.avatar"
+              :disabled="!form.avatar || isLoading"
               @click.prevent="updateInfo('avatar', form.avatar)"
             />
           </div>
@@ -64,7 +64,7 @@
           <div class="col-md-9">
             <input
               id="name-input-submit"
-              :disabled="!form.name"
+              :disabled="!form.name || isLoading"
               type="submit"
               class="form-control"
               value="Xác Nhận"
@@ -89,7 +89,7 @@
           <label class="col-md-3">Email Mới</label>
           <div class="col-md-9">
             <input
-              v-model="form.email"
+              v-model="form.email || isLoading"
               autocomplete="off"
               class="form-control"
               type="text"
@@ -101,7 +101,7 @@
           <label for="name-input-submit" class="col-md-3" />
           <div class="col-md-9">
             <input
-              :disabled="!form.email"
+              :disabled="!form.email || isLoading"
               autocomplete="off"
               type="submit"
               class="form-control"
@@ -115,14 +115,15 @@
 
       <div class="tab-item">
         <div class="settings-title">
-          <h3>Change Your Password</h3>
+          <h3>Đổi Mật Khẩu</h3>
         </div>
 
         <div class="form-group row">
-          <label for="currrent-password-input" class="col-md-3">Current Password</label>
+          <label for="currrent-password-input" class="col-md-3">Mật khẩu hiện tại</label>
           <div class="col-md-9">
             <input
               id="currrent-password-input"
+              v-model="form.currentPass"
               class="form-control"
               type="password"
               value=""
@@ -131,10 +132,13 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="new-password-input" class="col-md-3">New Password</label>
+          <label for="new-password-input" class="col-md-3">
+            Mật Khẩu Mới
+          </label>
           <div class="col-md-9">
             <input
               id="new-password-input"
+              v-model="form.password"
               class="form-control"
               type="password"
               value=""
@@ -143,10 +147,13 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="comfirm-password-input" class="col-md-3">Comfirm Password</label>
+          <label for="comfirm-password-input" class="col-md-3">
+            Xác Nhận Mật Khẩu
+          </label>
           <div class="col-md-9">
             <input
               id="comfirm-password-input"
+              v-model="form.rePass"
               class="form-control"
               type="password"
               value=""
@@ -158,14 +165,19 @@
         <div class="form-group row">
           <label for="password-input-submit" class="col-md-3" />
           <div class="col-md-9">
-            <label id="checkbox-weak-password" style="display: none"><input id="agree-weak-password" type="checkbox" >I agree to use
-              this weak password</label>
             <input
               id="password-input-submit"
               class="form-control"
               type="submit"
-              value="Submit"
+              value="Thay Đổi"
               name="account-form-submit"
+              :disabled="
+                form.currentPass.length < 6 ||
+                form.password < 6 ||
+                form.password !== form.rePass ||
+                isLoading
+              "
+              @click.prevent="updatePassword()"
             />
           </div>
         </div>
@@ -242,7 +254,7 @@
 </template>
 
 <script>
-import { USER_SETTINGS } from '../../graphql/mutations'
+import { CHANGE_PASS, USER_SETTINGS } from '../../graphql/mutations'
 
 export default {
   name: 'AccountSetting',
@@ -254,17 +266,21 @@ export default {
         name: '',
         email: '',
         avatar: '',
-        password: ''
+        password: '',
+        currentPass: '',
+        rePass: ''
       },
       upload: {
         avatar: ''
       },
+      isLoading: false,
       isLoadingImage: false,
       showCrop: false
     }
   },
   methods: {
     async updateInfo(key, value) {
+      this.isLoading = true
       try {
         const {
           data: { userSettings }
@@ -279,6 +295,21 @@ export default {
       } catch (e) {
         // lỗi
       }
+      this.isLoading = false
+    },
+
+    async updatePassword() {
+      this.isLoading = true
+      try {
+        await this.$apollo.mutate({
+          mutation: CHANGE_PASS,
+          variables: {
+            oldPass: this.form.currentPass,
+            newPass: this.form.password
+          }
+        })
+      } catch (e) {}
+      this.isLoading = false
     },
 
     openCropImage($event) {
