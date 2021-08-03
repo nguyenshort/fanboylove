@@ -22,11 +22,7 @@ router.get('/the-loai/:slug.:id', async ({ params, query }, res, next) => {
     category,
     count,
     order: query.order,
-    stories,
-    breadcrumb: {
-      link: `/the-loai/${category.slug}.${category._id}`,
-      name: category.name
-    }
+    stories
   })
 })
 

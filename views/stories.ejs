@@ -19,7 +19,7 @@
         <%- include('includes/header') -%>
 
         <div class="site-content">
-            <%- include('includes/genres-block', { breadcrumb }) -%>
+            <%- include('includes/genres-block', { breadcrumb: { link: `/truyen-tranh`, name: 'Truyện Tranh' } }) -%>
             <div class="c-page-content style-1">
                 <div class="content-area">
                     <div class="container">
@@ -54,17 +54,17 @@
                                                         <span>Sắp Xếp Theo </span>
                                                         <ul class="c-tabs-content">
                                                             <li class="<%= order === 'updatedAt' || !order ? 'active' : '' %>">
-                                                                <a href="<%= breadcrumb.link %>?order=updatedAt">
+                                                                <a href="/truyen-tranh?order=updatedAt">
                                                                     Mới Nhất
                                                                 </a>
                                                             </li>
                                                             <li class="<%= order === 'views' ? 'active' : '' %>">
-                                                                <a href="<%= breadcrumb.link %>?order=views">
+                                                                <a href="/truyen-tranh?order=views">
                                                                     Lượt Xem
                                                                 </a>
                                                             </li>
                                                             <li class="<%= order === 'rating' ? 'active' : '' %>">
-                                                                <a href="<%= breadcrumb.link %>?orde=rating">
+                                                                <a href="/truyen-tranh?orde=rating">
                                                                     Đánh Giá
                                                                 </a>
                                                             </li>

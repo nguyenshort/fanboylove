@@ -21,7 +21,8 @@ router.get('/truyen-tranh/:slug.:id', async ({ params }, res) => {
 
 router.get(
   '/truyen-tranh/:slug.:id/:chap.:chapid',
-  async ({ params }, res, next) => {
+  async ({ params, cookies }, res, next) => {
+    console.log(cookies)
     const StoryController = new storyController()
     const ChapterController = new chapterController()
     const [story, chapter] = await Promise.all([
@@ -49,11 +50,7 @@ router.get('/truyen-tranh', async ({ query }, res, next) => {
   res.render('stories', {
     count,
     order: query.order,
-    stories,
-    breadcrumb: {
-      link: `/truyen-tranh`,
-      name: 'Truyện Tranh'
-    }
+    stories
   })
 })
 
@@ -71,11 +68,7 @@ router.get('/tim-kiem', async ({ query }, res, next) => {
     keyword,
     count,
     order: query.order,
-    stories,
-    breadcrumb: {
-      link: `/tim-kiem?keyword=` + keyword,
-      name: 'Tìm Kiếm'
-    }
+    stories
   })
 })
 

@@ -19,7 +19,7 @@
         <%- include('includes/header') -%>
 
         <div class="site-content">
-            <%- include('includes/genres-block', { breadcrumb }) -%>
+            <%- include('includes/genres-block', { breadcrumb: { link: `/the-loai/${category.slug}.${category._id}`, name: category.name } }) -%>
             <div class="c-page-content style-1">
                 <div class="content-area">
                     <div class="container">
