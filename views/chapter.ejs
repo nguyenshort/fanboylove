@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="main-col col-md-12 col-sm-12 sidebar-hidden">
                                 <h1 id="chapter-heading">
-                                    <%= story.title %> - <%= chapter.name %>
+                                    <%= story.title %> - <%= chapter.name %><%= chapter.nameExtend ? ' - ' + chapter.nameExtend : '' %>
                                 </h1>
                                 <div class="main-col-inner">
                                     <div class="c-blog-post">

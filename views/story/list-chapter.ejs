@@ -9,10 +9,16 @@
                                 <img src="<%= webAssets(chapter.avatar) %>" alt="<%= chapter.name %>">
                             </div>
                         <%} %>
-                        <%= chapter.name %>
+                        <span class="chapter-name"><%= chapter.name %><%= chapter.nameExtend ? ' - ' + chapter.nameExtend : '' %></span>
                     </a>
                     <span class="chapter-release-date">
-                    <i><%= moment(chapter.createdAt).locale('vi').format('ll') %></i>
+                        <% if (Date.now() < chapter.createdAt + 259200000) {%>
+                            <span class="c-new-tag">
+                                <img src="/images/new.gif"  alt=""/>
+                            </span>
+                        <%} else {%>
+                                <i><%= moment(chapter.createdAt).locale('vi').format('ll') %></i>
+                        <%}%>
                 </span>
                 </li>
             <%} %>

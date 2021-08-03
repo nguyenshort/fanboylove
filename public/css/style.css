@@ -9531,3 +9531,16 @@ input.crop-button {
   border-radius: 50%;
   overflow: hidden;
 }
+.wp-manga-chapter._has_avatar>a .chapter-name {
+  width: calc(100% - 150px);
+}
+
+@media (max-width: 600px)  {
+  body.manga-page .page-content-listing.single-page .listing-chapters_wrap>ul.main.version-chap li._has_avatar .chapter-release-date {
+    position: absolute;
+    left: 155px;
+    right: unset;
+    top: unset;
+    bottom: 10px;
+  }
+}
