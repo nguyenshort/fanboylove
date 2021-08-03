@@ -37,7 +37,12 @@ router.get(
       value.content = BunnyCDN.webAssets(value.content, true)
     })
     const chapters = await ChapterController.getMany(story._id)
-    res.render('chapter', { story, chapter, chapters })
+    res.render('chapter', {
+      story,
+      chapter,
+      chapters,
+      lightTheme: !!cookies.lightTheme
+    })
   }
 )
 

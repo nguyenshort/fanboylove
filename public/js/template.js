@@ -306,6 +306,19 @@ $(document).ready(function () {
       ]
     })
   })
+
+  document.querySelectorAll('.wp-manga-action-button._dark-theme').forEach((element) => {
+    element.addEventListener('click', () => {
+      if (window.Cookies.get('lightTheme')) {
+        window.Cookies.remove('lightTheme')
+        document.querySelector('body').classList.add('text-ui-light')
+      } else {
+        window.Cookies.set('lightTheme')
+        document.querySelector('body').classList.remove('text-ui-light')
+      }
+    })
+  })
+
   try {
     (adsbygoogle = window.adsbygoogle || []).push({})
   } catch (e) {}
