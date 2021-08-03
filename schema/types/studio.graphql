@@ -19,4 +19,5 @@ input ChapterForm {
     content: Object!
     nameExtend: String
     publishTime: Float
+    note: String
 }

@@ -230,7 +230,8 @@ class StudioController {
     nameExtend,
     avatar,
     chapContent,
-    publishTime
+    publishTime,
+    note
   ) {
     const story = await this.story(storyID)
     if (!story) {
@@ -255,7 +256,8 @@ class StudioController {
       postActive: publishTime ? CHAPTER.SCHODULE : CHAPTER.ACTIVE,
       publishTime: publishTime ? publishTime : Date.now(),
       order: await this._getNextOrder(story._id),
-      createdAt: Date.now()
+      createdAt: Date.now(),
+      note
     })
     if (publishTime) {
       await Story.findByIdAndUpdate(story._id, {
@@ -270,7 +272,15 @@ class StudioController {
     return chapter
   }
 
-  async updateChapter(_id, name, nameExtend, avatar, chapContent, publishTime) {
+  async updateChapter(
+    _id,
+    name,
+    nameExtend,
+    avatar,
+    chapContent,
+    publishTime,
+    note
+  ) {
     const chapter = await Chapter.findById(_id)
     if (!chapter) {
       throw new ForbiddenError('Nội dung không tồn tại')
@@ -298,7 +308,8 @@ class StudioController {
         content,
         nameExtend,
         postActive: publishTime ? CHAPTER.SCHODULE : CHAPTER.ACTIVE,
-        publishTime: publishTime
+        publishTime: publishTime,
+        note
       },
       { returnOriginal: false }
     )

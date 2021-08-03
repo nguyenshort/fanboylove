@@ -1,14 +1,14 @@
 <html lang="en-US">
 
 <%- include(
-        'includes/head',
-        {
-            title: chapter.name + ' | ' +story.title,
-            description: '❶❶✅ Đọc truyện tranh ' + story.title + ' ' + chapter.name + ' bản dịch Full mới nhất, ảnh đẹp chất lượng cao tại ' + process.env.DOMAIN,
-            seo_image: webAssets(story.avatar),
-            showAds: story.adsense
-        }
-    );
+'includes/head',
+{
+title: chapter.name + ' | ' +story.title,
+description: '❶❶✅ Đọc truyện tranh ' + story.title + ' ' + chapter.name + ' bản dịch Full mới nhất, ảnh đẹp chất lượng cao tại ' + process.env.DOMAIN,
+seo_image: webAssets(story.avatar),
+showAds: story.adsense
+}
+);
 -%>
 
 
@@ -24,7 +24,8 @@
                         <div class="row">
                             <div class="main-col col-md-12 col-sm-12 sidebar-hidden">
                                 <h1 id="chapter-heading">
-                                    <%= story.title %> - <%= chapter.name %><%= chapter.nameExtend ? ' - ' + chapter.nameExtend : '' %>
+                                    <%= story.title ;%>
+                                    - <%= chapter.name ;%><%= chapter.nameExtend ? " - " + chapter.nameExtend : "" ;%>
                                 </h1>
                                 <div class="main-col-inner">
                                     <div class="c-blog-post">
@@ -32,27 +33,32 @@
                                         <div class="entry-content">
                                             <div class="entry-content_wrap">
                                                 <div class="read-container">
-                                                    <% if (story.adsense) {%>
+                                                    <% if (story.adsense) { %>
                                                         <%- include('includes/ads') -%>
-                                                    <%} %>
+                                                    <% } %>
+                                                    <% if (chapter.note) { %>
+                                                        <div class="chapter-note">
+                                                            <%= chapter.note %>
+                                                        </div>
+                                                    <% } %>
                                                     <div class="reading-content">
-                                                        <% for (let i = 0; i < chapter.content.length; i++) {%>
+                                                        <% for (let i = 0; i < chapter.content.length; i++) { %>
                                                             <div>
                                                                 <img
-                                                                        data-src="<%= chapter.content[i].content %>"
+                                                                        data-src="<%= chapter.content[i].content ;%>"
                                                                         src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                                                                        alt="<%= chapter.name %>"
+                                                                        alt="<%= chapter.name ;%>"
                                                                         class="w-100 d-block lazyload chapter-img"
                                                                 >
                                                             </div>
-                                                            <% if (story.adsense && [15, 50, 75].includes(i)) {%>
+                                                            <% if (story.adsense && [15, 50, 75].includes(i)) { %>
                                                                 <%- include('includes/ads') -%>
-                                                            <%} %>
-                                                        <%} %>
+                                                            <% } %>
+                                                        <% } %>
                                                     </div>
-                                                        <% if (story.adsense) {%>
-                                                            <%- include('includes/ads') -%>
-                                                        <%} %>
+                                                    <% if (story.adsense) { %>
+                                                        <%- include('includes/ads') -%>
+                                                    <% } %>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,7 +72,9 @@
                                                 <div class="manga-discussion wrapper">
                                                     <div id="comments" class="comments-area">
                                                         <div id="respond" class="comment-respond">
-                                                            <div class="fb-comments" data-href="<%= process.env.DOMAIN %>/truyen-tranh/<%= story.slug %>.<%= story._id%>" data-width="" data-numposts="5"></div>
+                                                            <div class="fb-comments"
+                                                                 data-href="<%= process.env.DOMAIN ;%>/truyen-tranh/<%= story.slug ;%>.<%= story._id ;%>"
+                                                                 data-width="" data-numposts="5"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,33 +103,33 @@
 <%- include('includes/script-core') -%>
 
 <script>
-    $(document).ready(()=> {
-        const story = '/truyen-tranh/<%= story.slug %>.<%= story._id %>/'
-        document.querySelectorAll('.single-chapter-select').forEach((element) => {
-            element.addEventListener('change', ({ target }) => {
-                const newChapter = target.options[target.selectedIndex].value
-                window.location.href = story + newChapter
-            })
-        })
-        document.querySelectorAll('.select-pagination .nav-links a').forEach((element) => {
-            element.addEventListener('click', (e) => {
-                e.preventDefault()
-                try {
-                    let newChapter = {}
-                    const chapters = document.querySelector('.single-chapter-select')
-                    if (element.classList.contains('prev_page')) {
-                        newChapter = chapters.options[chapters.selectedIndex + 1].value
-                    } else {
-                        newChapter = chapters.options[chapters.selectedIndex -1].value
-                    }
-                    window.location.href = story + newChapter
-                } catch (e) {
-                    // ko có chapter next-prev
-                    window.location.href = story
-                }
-            })
-        })
+  $(document).ready(() => {
+    const story = '/truyen-tranh/<%= story.slug ;%>.<%= story._id ;%>/'
+    document.querySelectorAll('.single-chapter-select').forEach((element) => {
+      element.addEventListener('change', ({ target }) => {
+        const newChapter = target.options[target.selectedIndex].value
+        window.location.href = story + newChapter
+      })
     })
+    document.querySelectorAll('.select-pagination .nav-links a').forEach((element) => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault()
+        try {
+          let newChapter = {}
+          const chapters = document.querySelector('.single-chapter-select')
+          if (element.classList.contains('prev_page')) {
+            newChapter = chapters.options[chapters.selectedIndex + 1].value
+          } else {
+            newChapter = chapters.options[chapters.selectedIndex - 1].value
+          }
+          window.location.href = story + newChapter
+        } catch (e) {
+          // ko có chapter next-prev
+          window.location.href = story
+        }
+      })
+    })
+  })
 </script>
 
 </body>

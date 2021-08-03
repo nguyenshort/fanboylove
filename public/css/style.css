@@ -9544,3 +9544,13 @@ input.crop-button {
     bottom: 10px;
   }
 }
+.chapter-note {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #e91e63;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 16px;
+}

@@ -83,7 +83,18 @@ module.exports = {
 
     publishChapter: async (
       _,
-      { input: { _id, name, content, avatar, story, nameExtend, publishTime } },
+      {
+        input: {
+          _id,
+          name,
+          content,
+          avatar,
+          story,
+          nameExtend,
+          publishTime,
+          note
+        }
+      },
       { user }
     ) => {
       const studioController = new StudioController(user)
@@ -94,7 +105,8 @@ module.exports = {
           nameExtend,
           avatar,
           content,
-          publishTime
+          publishTime,
+          note
         )
       }
       return studioController.createChapter(
@@ -103,7 +115,8 @@ module.exports = {
         nameExtend,
         avatar,
         content,
-        publishTime
+        publishTime,
+        note
       )
     },
 

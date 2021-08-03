@@ -35,6 +35,11 @@ const ChapterSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  note: {
+    type: String,
+    default: null,
+    trim: true
+  },
   order: {
     type: Number,
     default: 0,
