@@ -56,7 +56,6 @@ module.exports.uploadSingle = async (req, res, next) => {
     })
   } catch (e) {
     Event.removeFile(req.file.path)
-    console.log(e)
     return res.status(500)
   }
 }

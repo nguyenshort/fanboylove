@@ -11,7 +11,6 @@ async function f() {
     await Story.findByIdAndUpdate(story._id, {
       countChapter: await Chapter.find({ story: story._id }).countDocuments()
     })
-    console.log(story.title)
   }
 }
 
