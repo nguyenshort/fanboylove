@@ -951,7 +951,7 @@ template {
   margin-right: 20px;
 }
 #hover-infor .item_thumb .post-title a {
-  color: #3b66f5;
+  color: #41855e;
 }
 #hover-infor .item_thumb .post-title a:hover {
   color: #666666;
@@ -1042,7 +1042,7 @@ template {
   top: 50px;
   font-size: 40px;
   line-height: 40px;
-  color: #3b66f5;
+  color: #41855e;
   pointer-events: none;
   -webkit-animation: fa-spin 2s infinite linear, eFadeIn 0.35s;
   animation: fa-spin 2s infinite linear, eFadeIn 0.35s;
@@ -1089,7 +1089,7 @@ body.error404 figure {
 }
 .reading-content .post-password-form input[name='post_password'], #oneshot-reader .post-password-form input[name='post_password']{width:300px; display:inline-block}
 .post-password-form input[name='Submit'] {
-  background-color: #3b66f5;
+  background-color: #41855e;
   border: none;
   font-weight: 600;
   color: #fff;
@@ -1206,7 +1206,7 @@ body.text-ui-light.manga-page .version-chap:after {
   background: -o-linear-gradient(top, rgba(38, 38, 38, 0), #262626);
 }
 body.text-ui-light.manga-page .content-readmore:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.text-ui-light .site-header .c-header__top {
   background-color: #262626;
@@ -1410,7 +1410,7 @@ body.text-ui-light #manga-filte-alphabeta-bar a{background-color: #7b7b7b}
   border-radius: 25px;
   font-weight: 600;
   color: #fff;
-  background-color: #3b66f5;
+  background-color: #41855e;
   -webkit-transition: background-color 200ms ease;
   -moz-transition: background-color 200ms ease;
   -o-transition: background-color 200ms ease;
@@ -1480,7 +1480,7 @@ body.modal-open .modal .modal-content .modal-body .g-recaptcha > div {
   color: #fff;
 }
 .settings-page .list-chapter .chapter-item .chapter:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .settings-page .list-chapter .chapter-item .chapter:hover a {
   color: #fff;
@@ -1490,7 +1490,7 @@ body.modal-open .modal .modal-content .modal-body .g-recaptcha > div {
   font-weight: 600;
 }
 .settings-page .list-chapter .chapter-item a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 #manga-discussion .comment-selection-wrapper {
   float: right;
@@ -1599,7 +1599,7 @@ body.modal-open .modal.custom-modal .modal-content .modal-footer .btn:hover {
   background-color: #37b7da;
 }
 .manga-title-badges.custom {
-  background-color: #3b66f5;
+  background-color: #41855e;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
@@ -2304,15 +2304,15 @@ h6,
   font-size: 18px;
   width: 30px;
   height: 30px;
-  background: #3b66f5;
+  background: #41855e;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #3b66f5 40%, #3b66f5);
+  background: -webkit-linear-gradient(left, #41855e 40%, #41855e);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -o-linear-gradient(right, #41855e 40%, #41855e);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -moz-linear-gradient(right, #41855e 40%, #41855e);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #3b66f5 40%, #3b66f5);
+  background: linear-gradient(to right, #41855e 40%, #41855e);
   /* Standard syntax */
   color: #fff;
   position: relative;
@@ -2335,7 +2335,7 @@ h6,
   height: 0;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-left: 5px solid #3b66f5;
+  border-left: 5px solid #41855e;
   position: absolute;
   left: 100%;
   top: 50%;
@@ -2357,15 +2357,15 @@ h6,
 .c-blog__heading.style-3 {
   width: auto;
   display: inline-block;
-  background: #3b66f5;
+  background: #41855e;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #3b66f5 40%, #3b66f5);
+  background: -webkit-linear-gradient(left, #41855e 40%, #41855e);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -o-linear-gradient(right, #41855e 40%, #41855e);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -moz-linear-gradient(right, #41855e 40%, #41855e);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #3b66f5 40%, #3b66f5);
+  background: linear-gradient(to right, #41855e 40%, #41855e);
   /* Standard syntax */
   color: #fff;
   padding: 0 20px;
@@ -2525,7 +2525,7 @@ h6,
   -moz-transition: all 200ms ease;
   -o-transition: all 200ms ease;
   transition: all 200ms ease;
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .c-btn.c-btn_style-1:hover {
   color: #fff;
@@ -2533,8 +2533,8 @@ h6,
 }
 .c-btn.c-btn_style-2 {
   padding: 12px 38px;
-  border: 3px solid #3b66f5;
-  color: #3b66f5;
+  border: 3px solid #41855e;
+  color: #41855e;
   background-color: transparent;
   -webkit-transition: all 200ms ease;
   -moz-transition: all 200ms ease;
@@ -2566,7 +2566,7 @@ a {
 }
 a:hover {
   text-decoration: none;
-  color: #3b66f5;
+  color: #41855e;
 }
 .item-title,
 .widget-title .heading,
@@ -2617,7 +2617,7 @@ script {
   line-height: 1.9;
 }
 .go-to-top:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .go-to-top:hover i {
   color: #ffffff;
@@ -2754,7 +2754,7 @@ img.lazyloaded {
   background-color: rgba(235, 235, 235, 0.3);
 }
 .wpcf7-form .wpcf7-validation-errors {
-  border-color: #3b66f5;
+  border-color: #41855e;
 }
 /*11.0 - Wall Ads*/
 .wall-ads-control {
@@ -2927,7 +2927,7 @@ img.lazyloaded {
   top: 0;
   right: 15px;
   bottom: 0;
-  background: #3b66f5;
+  background: #41855e;
   border: none;
   font-weight: 600;
   color: #fff;
@@ -3016,7 +3016,7 @@ img.lazyloaded {
   text-align: center;
   border-radius: 50%;
   line-height: 36px;
-  color: #3b66f5;
+  color: #41855e;
 }
 .site-header .main-navigation .search-navigation .menu-search .open-search-main-menu i:before {
   font-weight: 700;
@@ -3065,7 +3065,7 @@ img.lazyloaded {
   border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 .site-header .main-navigation.style-1 {
-  background: linear-gradient(90deg,#3b66f5 40%,#3b66f5);
+  background: linear-gradient(90deg,#41855e 40%,#41855e);
 }
 .site-header .main-navigation.style-1 .wrap_branding {
   width: 25%;
@@ -3323,10 +3323,10 @@ img.lazyloaded {
   transition: all 0.3s;
 }
 .site-header .c-sub-header-nav .c-sub-nav_wrap .sub-nav_content .sub-nav_list li.menu-item-has-children.active > a {
-  color: #3b66f5;
+  color: #41855e;
 }
 .site-header .c-sub-header-nav .c-sub-nav_wrap .sub-nav_content .sub-nav_list li:hover > a {
-  color: #3b66f5;
+  color: #41855e;
 }
 .site-header .c-sub-header-nav .c-sub-nav_wrap .sub-nav_content .sub-nav_list > li.menu-item-has-children {
   position: static;
@@ -3339,7 +3339,7 @@ img.lazyloaded {
   right: 0;
   list-style: none;
   padding: 17px 10px;
-  border-bottom: 3px solid #3b66f5;
+  border-bottom: 3px solid #41855e;
   border-top: 1px solid #ebebeb;
   -webkit-transition: all 0s;
   -moz-transition: all 0s;
@@ -3426,7 +3426,7 @@ img.lazyloaded {
   right: 0;
   padding: 10px;
   z-index: 9999;
-  border-bottom: 3px solid #3b66f5;
+  border-bottom: 3px solid #41855e;
   border-top: 1px solid #ebebeb;
   white-space: nowrap;
 }
@@ -3456,7 +3456,7 @@ img.lazyloaded {
   position: relative;
 }
 .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item .c-user_menu a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item .c-user_avatar:hover {
   cursor: pointer;
@@ -3568,7 +3568,7 @@ body.modal-open .modal .modal-content .modal-body .login .submit .wp-submit {
   border-radius: 25px;
   font-weight: 600;
   color: #fff;
-  background-color: #3b66f5;
+  background-color: #41855e;
   -webkit-transition: background-color 200ms ease;
   -moz-transition: background-color 200ms ease;
   -o-transition: background-color 200ms ease;
@@ -3676,15 +3676,15 @@ body.modal-open .modal .modal-content .modal-body .login #resetform:after {
   content: "";
 }
 .off-canvas {
-  background: #3b66f5;
+  background: #41855e;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #3b66f5 40%, #3b66f5);
+  background: -webkit-linear-gradient(left, #41855e 40%, #41855e);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -o-linear-gradient(right, #41855e 40%, #41855e);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -moz-linear-gradient(right, #41855e 40%, #41855e);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #3b66f5 40%, #3b66f5);
+  background: linear-gradient(to right, #41855e 40%, #41855e);
   /* Standard syntax */
   position: fixed;
   width: 300px;
@@ -4242,7 +4242,7 @@ body.page .c-page-content .c-page .c-page__content .page-content-listing .page-l
   color: #fff;
 }
 body.page .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 body.page .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter:hover a {
   color: #fff;
@@ -4252,7 +4252,7 @@ body.page .c-page-content .c-page .c-page__content .page-content-listing .page-l
   font-weight: 600;
 }
 body.page .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.page .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail:after {
   display: table;
@@ -4327,7 +4327,7 @@ body.page .related-post .related__container .related__item.no-thumb .related__co
   position: relative;
 }
 body.page .related-post .related__container .related__item.no-thumb .related__content a {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.page .related-post .related__container .related__item:hover .related__content {
   webkit-transform: translate3d(0, 30px, 0);
@@ -4357,7 +4357,7 @@ body.page:not(.single) .main-col-inner .entry-header .entry-title {
   color: #888888;
 }
 .c-breadcrumb .breadcrumb li a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 .c-breadcrumb .breadcrumb li + li:before {
   content: "/";
@@ -4506,7 +4506,7 @@ body.search .c-search-header__wrapper .search-content .search-form .search-submi
   height: 60px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: #3b66f5;
+  background-color: #41855e;
   -webkit-transition: background-color 0.3s;
   -moz-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
@@ -4531,8 +4531,8 @@ body.search .c-search-header__wrapper .search-content .search-form .search-submi
 body.search .c-search-header__wrapper .search-content .btn-search-adv {
   padding: 17px 25px 16px;
   float: right;
-  border: 3px solid #3b66f5;
-  color: #3b66f5;
+  border: 3px solid #41855e;
+  color: #41855e;
   font-weight: 600;
   -webkit-transition: all 150ms ease;
   -moz-transition: all 150ms ease;
@@ -4572,7 +4572,7 @@ body.search .c-search-header__wrapper .search-content .btn-search-adv span.icon-
   font-size: 18px;
 }
 body.search .c-search-header__wrapper .search-content .btn-search-adv.collapsed {
-  border-color: #3b66f5;
+  border-color: #41855e;
 }
 body.search .c-search-header__wrapper .search-content .btn-search-adv.collapsed:hover {
   border-color: #0f0f0f;
@@ -4725,7 +4725,7 @@ body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .t
   color: #333333;
 }
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-summary .post-content .post-content_item .summary-content:not(.release-year) a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-summary .post-content .post-content_item .summary-content.release-year a {
   color: #888888;
@@ -4765,7 +4765,7 @@ body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .t
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-summary .post-content .post-content_item.mg_author .summary-content,
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-summary .post-content .post-content_item.mg_artists .summary-content,
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-summary .post-content .post-content_item.mg_genres .summary-content {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-summary .post-content::after {
   content: "";
@@ -4820,7 +4820,7 @@ body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .t
   color: #666666;
 }
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 body.search .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter:hover a {
   color: #fff;
@@ -4869,12 +4869,12 @@ body.search .no-results .not-found-content {
   transition: all 0.3s;
 }
 .genres_wrap .c-blog__heading.style-3.active:after {
-  border-top: 10px solid #3b66f5;
+  border-top: 10px solid #41855e;
 }
 .genres_wrap a.btn-genres {
-  border: 2px solid #3b66f5;
+  border: 2px solid #41855e;
   padding: 3px 9px;
-  color: #3b66f5;
+  color: #41855e;
   border-radius: 0;
   box-shadow: none;
   -webkit-transition: all 200ms ease;
@@ -4957,10 +4957,10 @@ body.manga-page .profile-manga .post-title h1 {
   margin-top: 14px;
   font-size: 20px;
   font-weight: normal;
-  color: #3b66f5;
+  color: #41855e;
 }
 body.manga-page .profile-manga .post-title a {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.manga-page .profile-manga .tab-summary .post-content_item,
 body.manga-page .profile-manga .post-status .post-content_item {
@@ -5108,7 +5108,7 @@ body.manga-page .profile-manga .tab-summary .summary_content_wrap .summary_conte
 body.manga-page .profile-manga .tab-summary .summary_content_wrap .summary_content .post-status .manga-action .count-comment .action_detail a i,
 body.manga-page .profile-manga .tab-summary .summary_content_wrap .summary_content .post-status .manga-action .add-bookmark .action_detail a i {
   font-size: 36px;
-  color: #3b66f5;
+  color: #41855e;
 }
 body.manga-page .profile-manga .tab-summary .summary_content_wrap .summary_content .post-status .manga-action .count-comment {
   border-right: 1px solid #e1e1e1;
@@ -5124,7 +5124,7 @@ body.manga-page .profile-manga .tab-summary .loader-inner {
   z-index: 99;
 }
 body.manga-page .profile-manga .tab-summary .loader-inner > div {
-  background-color: #3b66f5;
+  background-color: #41855e;
   width: 10px;
   height: 10px;
 }
@@ -5310,7 +5310,7 @@ body.manga-page.text-ui-light .page-content-listing.single-page .listing-chapter
   background-color: #4d4d4d;
 }
 .text-ui-light .page-listing-item.shortcode-manga-chapters.chapter-listing-2 .wp-manga-chapter a{color:#000}
-.text-ui-light .page-listing-item.shortcode-manga-chapters.chapter-listing-2 .wp-manga-chapter a:hover{color:#3b66f5}
+.text-ui-light .page-listing-item.shortcode-manga-chapters.chapter-listing-2 .wp-manga-chapter a:hover{color:#41855e}
 
 body.manga-page .page-content-listing.single-page .listing-chapters_wrap > ul.main.version-chap li.has-child.active:after, .shortcode-manga-chapters .listing-chapters_wrap > ul.main.version-chap li.has-child.active:after {
   opacity: 0;
@@ -5499,7 +5499,7 @@ body.manga-page .chapter-readmore.more:after {
 }
 body.manga-page .content-readmore:hover,
 body.manga-page .chapter-readmore:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 body.manga-page .chapter-readmore {
   display: none;
@@ -5582,7 +5582,7 @@ body.manga-page.reading-manga .wp-manga-tags-wrapper {
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-left: 8px solid #3b66f5;
+  border-left: 8px solid #41855e;
   position: absolute;
   left: 100%;
   top: 50%;
@@ -5603,20 +5603,20 @@ body.manga-page.reading-manga .wp-manga-tags-wrapper {
   visibility: visible;
 }
 .settings-page .nav-tabs-wrap ul.nav-tabs li.active a {
-  background: #3b66f5;
+  background: #41855e;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #3b66f5 40%, #3b66f5);
+  background: -webkit-linear-gradient(left, #41855e 40%, #41855e);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -o-linear-gradient(right, #41855e 40%, #41855e);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -moz-linear-gradient(right, #41855e 40%, #41855e);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #3b66f5 40%, #3b66f5);
+  background: linear-gradient(to right, #41855e 40%, #41855e);
   /* Standard syntax */
   color: #fff;
 }
 .settings-page .nav-tabs-wrap ul.nav-tabs li:not(.active):hover a {
-  color: #3b66f5;
+  color: #41855e;
 }
 .settings-page .tabs-content-wrap {
   padding-bottom: 30px;
@@ -5796,7 +5796,7 @@ body.manga-page.reading-manga .wp-manga-tags-wrapper {
   line-height: 1.1;
 }
 .settings-page .tabs-content-wrap .tab-group-item .tab-item .history-content .item-infor .chapter span a {
-  color: #3b66f5;
+  color: #41855e;
 }
 .settings-page .tabs-content-wrap .tab-group-item .tab-item .history-content .item-infor .chapter span a:hover {
   color: #888888;
@@ -6050,7 +6050,7 @@ body.manga-page.reading-manga .wp-manga-tags-wrapper {
 .settings-page .remove-all #delete-bookmark-manga {
   font-size: 13px;
   font-weight: 600;
-  background-color: #3b66f5;
+  background-color: #41855e;
   color: #fff;
   border: none;
   border-radius: 15px;
@@ -6075,7 +6075,7 @@ body.manga-page.reading-manga .wp-manga-tags-wrapper {
 .settings-page input[type="submit"] {
   font-size: 13px;
   font-weight: 600;
-  background-color: #3b66f5;
+  background-color: #41855e;
   border: none;
   border-radius: 15px;
   padding-left: 20px;
@@ -6135,7 +6135,7 @@ body.reading-manga .c-select-bottom .entry-header_wrap .action-icon ul li a {
   background-color: #ebebeb;
   position: relative;
   border-radius: 50%;
-  color: #3b66f5;
+  color: #41855e;
   -webkit-transition: all ease-in-out 0.2s;
   -moz-transition: all ease-in-out 0.2s;
   -o-transition: all ease-in-out 0.2s;
@@ -6154,7 +6154,7 @@ body.reading-manga .c-select-bottom .entry-header_wrap .action-icon ul li a i {
 }
 body.reading-manga .entry-header .entry-header_wrap .action-icon ul li:hover a,
 body.reading-manga .c-select-bottom .entry-header_wrap .action-icon ul li:hover a {
-  background-color: #3b66f5;
+  background-color: #41855e;
   color: #ffffff;
 }
 body.reading-manga .entry-header .entry-header_wrap .action-icon,
@@ -6259,7 +6259,7 @@ body.reading-manga .c-select-bottom .select-pagination .nav-links > * {
 body.reading-manga .entry-header .select-pagination .nav-links > * a,
 body.reading-manga .c-select-bottom .select-pagination .nav-links > * a {
   padding: 9px 17px;
-  background-color: #3b66f5;
+  background-color: #41855e;
   color: #fff;
   position: relative;
   -webkit-transition: all 200ms ease;
@@ -6488,13 +6488,13 @@ body.archive .wp-pagenavi {
   top: 9px;
   left: 0;
   margin-top: -15px;
-  color: #3b66f5;
+  color: #41855e;
 }
 .c-blog-post .entry-header .entry-meta .post-on .posted-on a {
   color: #666666;
 }
 .c-blog-post .entry-header .entry-meta .post-on .posted-on a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 .c-blog-post .entry-header .entry-meta .post-on .c-blog__date {
   padding-right: 20%;
@@ -6505,7 +6505,7 @@ body.archive .wp-pagenavi {
   color: #666666;
 }
 .c-blog-post .entry-header .entry-meta .post-on .c-blog__date .post-category a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 @media (max-width: 600px) {
   .c-blog-post .entry-header .entry-meta .post-on {
@@ -6969,7 +6969,7 @@ body.single .paging-navigation:last-child {
   border-radius: 25px;
   font-weight: 600;
   color: #fff;
-  background-color: #3b66f5;
+  background-color: #41855e;
   /*back mau grand*/
   -webkit-transition: background-color 200ms ease;
   -moz-transition: background-color 200ms ease;
@@ -7138,8 +7138,8 @@ body.single .paging-navigation:last-child {
   margin-left: 6px;
 }
 .navigation-ajax .load-ajax:hover {
-  background: #3b66f5;
-  border-color: #3b66f5;
+  background: #41855e;
+  border-color: #41855e;
 }
 .navigation-ajax .load-ajax:hover .load-title {
   color: #fff;
@@ -7202,7 +7202,7 @@ body.single .paging-navigation:last-child {
   background-color: #f3f3f3;
 }
 .wp-pagenavi a:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
   color: #fff;
 }
 .wp-pagenavi .current {
@@ -7247,7 +7247,7 @@ body.single .paging-navigation:last-child {
 }
 .site-content .main-col .item-tags ul li a:hover {
   color: #fff;
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 /**
  * :: Plugins
@@ -7268,10 +7268,10 @@ body.single .paging-navigation:last-child {
   font-size: 10px;
 }
 .manga-slider .slider__container .slick-dots li button:hover:before {
-  color: #3b66f5;
+  color: #41855e;
 }
 .manga-slider .slider__container .slick-dots li.slick-active button:before {
-  color: #3b66f5;
+  color: #41855e;
 }
 .manga-slider .slider__container .slick-list {
   padding-left: 0px !important;
@@ -7343,7 +7343,7 @@ body.single .paging-navigation:last-child {
   visibility: visible;
 }
 .manga-slider .slider__container .slick-list .slick-track .slider__item.no-thumb .slider__content .slider__content_item .post-title h4 a {
-  color: #3b66f5;
+  color: #41855e;
 }
 .manga-slider .slider__container .slick-list .slick-track .slider__item:hover .slider__content .slider__content_item {
   webkit-transform: translate3d(0, 30px, 0);
@@ -7463,8 +7463,8 @@ body.single .paging-navigation:last-child {
 }
 .popular-slider .slider__container .slider__item .slider__content .slider__content_item .chapter-item .chapter a:hover {
   color: #fff;
-  background-color: #3b66f5;
-  border-color: #3b66f5;
+  background-color: #41855e;
+  border-color: #41855e;
 }
 .popular-slider .slider__container .slider__item .slider__content .slider__content_item .post-title h4 {
   font-size: 14px;
@@ -7497,7 +7497,7 @@ body.single .paging-navigation:last-child {
   transition: background-color 200ms ease;
 }
 .popular-slider .slider__container .slick-arrow:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .popular-slider .slider__container .slick-arrow:before {
   display: inline-block;
@@ -7802,7 +7802,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   width: 65%;
   padding: 10px;
   z-index: 9999;
-  border-bottom: 3px solid #3b66f5;
+  border-bottom: 3px solid #41855e;
   border-top: 1px solid #ebebeb;
   white-space: nowrap;
 }
@@ -7832,7 +7832,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   position: relative;
 }
 .wp-manga-user-section .c-user_item .c-user_menu a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 .wp-manga-user-section .c-user_item .c-user_avatar:hover {
   cursor: pointer;
@@ -7877,7 +7877,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
 }
 .widget.widget_tag_cloud .tag-cloud-link:hover {
   color: #fff;
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .widget.widget_search .search-form {
   position: relative;
@@ -8049,7 +8049,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   transition: background-color 200ms ease;
 }
 .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter:hover a {
   color: #fff;
@@ -8067,7 +8067,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   margin-bottom: 0;
 }
 .widget.c-popular .widget-view-more {
-  background-color: #3b66f5;
+  background-color: #41855e;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -8128,7 +8128,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   -moz-transition: all 200ms ease;
   -o-transition: all 200ms ease;
   transition: all 200ms ease;
-  background-color: #3b66f5;
+  background-color: #41855e;
   font-weight: 600;
   border: none;
   padding: 6px 20px;
@@ -8149,15 +8149,15 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   content: "";
   display: block;
   height: 4px;
-  background: #3b66f5;
+  background: #41855e;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #3b66f5 40%, #3b66f5);
+  background: -webkit-linear-gradient(left, #41855e 40%, #41855e);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -o-linear-gradient(right, #41855e 40%, #41855e);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -moz-linear-gradient(right, #41855e 40%, #41855e);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #3b66f5 40%, #3b66f5);
+  background: linear-gradient(to right, #41855e 40%, #41855e);
   /* Standard syntax */
 }
 .widget.background.widget_tag_cloud .tag-cloud-link {
@@ -8168,7 +8168,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   transition: background-color 200ms ease;
 }
 .widget.background.widget_tag_cloud .tag-cloud-link:hover {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .widget.heading-style-2.no-icon .c-blog__heading {
   border-bottom: 1px solid #e1e1e1;
@@ -8184,15 +8184,15 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
 .related-heading,
 .widget-heading {
   display: inline-block;
-  background: #3b66f5;
+  background: #41855e;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #3b66f5 40%, #3b66f5);
+  background: -webkit-linear-gradient(left, #41855e 40%, #41855e);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -o-linear-gradient(right, #41855e 40%, #41855e);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #3b66f5 40%, #3b66f5);
+  background: -moz-linear-gradient(right, #41855e 40%, #41855e);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #3b66f5 40%, #3b66f5);
+  background: linear-gradient(to right, #41855e 40%, #41855e);
   /* Standard syntax */
   color: #fff;
   padding: 0 20px;
@@ -8208,7 +8208,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #3b66f5;
+  border-top: 10px solid #41855e;
   position: absolute;
   top: 100%;
   left: 15px;
@@ -8255,7 +8255,7 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
 }
 .widget_shopping_cart .woocommerce-mini-cart__buttons a {
   padding: 11px 20px;
-  background: #3b66f5;
+  background: #41855e;
   color: #fff;
   font-weight: 600;
 }
@@ -8317,11 +8317,11 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
 }
 .widget_price_filter .price_slider.ui-slider .ui-slider-handle,
 .widget_price_filter .price_slider.ui-slider .ui-slider-range {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 .widget_price_filter .price_slider_amount button {
   padding: 11px 20px;
-  background: #3b66f5;
+  background: #41855e;
   color: #fff;
   font-weight: 600;
   transition: color 200ms ease, background-color 200ms ease;
@@ -8360,10 +8360,10 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   font-size: 9px;
 }
 .widget_product_categories .product-categories li a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 .widget_product_categories .product-categories li a:hover:before {
-  color: #3b66f5;
+  color: #41855e;
 }
 .woocommerce-widget-layered-nav .woocommerce-widget-layered-nav-list .woocommerce-widget-layered-nav-list__item {
   font-size: 13px;
@@ -8395,13 +8395,13 @@ body.search .c-search-header__wrapper .search-content .search-form input.ui-auto
   font-size: 9px;
 }
 .woocommerce-widget-layered-nav .woocommerce-widget-layered-nav-list .woocommerce-widget-layered-nav-list__item a:hover {
-  color: #3b66f5;
+  color: #41855e;
 }
 .woocommerce-widget-layered-nav .woocommerce-widget-layered-nav-list .woocommerce-widget-layered-nav-list__item a:hover:before {
-  color: #3b66f5;
+  color: #41855e;
 }
 .woocommerce-widget-layered-nav .woocommerce-widget-layered-nav-list .woocommerce-widget-layered-nav-list__item a:hover + span {
-  color: #3b66f5;
+  color: #41855e;
 }
 .text-ui-light.woocommerce .widget_shopping_cart .woocommerce-mini-cart__total strong,
 .text-ui-light.woocommerce div.entry-summary .entry-title,
@@ -8441,7 +8441,7 @@ body.search.text-ui-light .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-it
   display: block;
   width: 30px;
   height: 30px;
-  background-color: #3b66f5;
+  background-color: #41855e;
   text-align: center;
   border-radius: 50%;
   line-height: 32px;
@@ -8762,7 +8762,7 @@ body.modal-open .modal .modal-content .modal-header .close, body.modal-open .mod
  **/
 body.page.text-ui-light .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter,.text-ui-light .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter,body.text-ui-light .settings-page .list-chapter .chapter-item .chapter,body.search.text-ui-light .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter{background: transparent; border: 1px solid #888}
 body.page.text-ui-light .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter a,.text-ui-light .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter a, body.text-ui-light .settings-page .list-chapter .chapter-item .chapter a,body.search.text-ui-light .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter a{color: #ccc; }
-body.page.text-ui-light .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter a:hover,.text-ui-light .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter a:hover, body.text-ui-light .settings-page .list-chapter .chapter-item .chapter a:hover,body.search.text-ui-light .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter a:hover{color:#3b66f5}
+body.page.text-ui-light .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item .chapter a:hover,.text-ui-light .widget.c-popular .popular-item-wrap .popular-content .chapter-item .chapter a:hover, body.text-ui-light .settings-page .list-chapter .chapter-item .chapter a:hover,body.search.text-ui-light .search-wrap .tab-content-wrap .c-tabs-item .c-tabs-item__content .tab-meta .latest-chap .chapter a:hover{color:#41855e}
 body.reading-manga.text-ui-light .entry-header .c-selectpicker select.selectpicker, body.reading-manga.text-ui-light .c-select-bottom .c-selectpicker select.selectpicker{background-color: rgba(235, 235, 235, 0.2);}
 body.text-ui-light .settings-page .tabs-content-wrap .tab-group-item.image_setting .settings-heading,body.text-ui-light .settings-page .tabs-content-wrap .tab-group-item.other_setting .settings-heading{background-color:#333}
 body.text-ui-light .settings-page .tabs-content-wrap .tab-group-item.image_setting .settings-heading h3,body.text-ui-light .settings-page .tabs-content-wrap .tab-group-item.other_setting .settings-heading h3{color:#ebebeb}
@@ -9012,13 +9012,13 @@ body.manga-page .profile-manga.summary-layout-2 .summary_image img{border-radius
 .related-reading-wrap.related-style-2{}
 .related-reading-wrap.related-style-2 .related-reading-img{width:100%; float:none;margin:0 0 10px 0}
 
-.item-thumb .quick-chapter-link{position: absolute;    right: 0;    bottom: 0;    background: #3b66f5;    padding: 1px 5px;    font-size: 0.8em;    font-weight: bold;    color:#FFF;    display: inline-block;    min-width: 40px;    text-align: center;}
+.item-thumb .quick-chapter-link{position: absolute;    right: 0;    bottom: 0;    background: #41855e;    padding: 1px 5px;    font-size: 0.8em;    font-weight: bold;    color:#FFF;    display: inline-block;    min-width: 40px;    text-align: center;}
 .item-thumb .manga-type{position: absolute;    bottom: 0;    left: 0;    background: #8e8e8e;    padding:1px 5px;    color: #fff;    font-size: 0.8em;}
 
 .settings-page .list-bookmark .chapter{font-size:0.8em}
 .settings-page .list-bookmark .chapter span{color:#FFF}
 
-.page-content-listing.single-page li.wp-manga-chapter.unread a{color:#3b66f5}
+.page-content-listing.single-page li.wp-manga-chapter.unread a{color:#41855e}
 
 body.manga-page .listing-chapters_wrap.cols-4 .version-chap.no-volumn, body.manga-page .listing-chapters_wrap.cols-3 ul.version-chap.no-volumn, body.manga-page .listing-chapters_wrap.cols-2 ul.version-chap.no-volumn,body.manga-page .listing-chapters_wrap.cols-4 .version-chap.no-volumn .sub-chap-list, body.manga-page .listing-chapters_wrap.cols-3 ul.version-chap.no-volumn .sub-chap-list, body.manga-page .listing-chapters_wrap.cols-2 ul.version-chap.no-volumn .sub-chap-list,body.manga-page .listing-chapters_wrap.cols-4 .version-chap.volumns .sub-chap .sub-chap-list, body.manga-page .listing-chapters_wrap.cols-3 ul.version-chap.volumns .sub-chap .sub-chap-list, body.manga-page .listing-chapters_wrap.cols-2 ul.version-chap.volumns .sub-chap .sub-chap-list{display: flex;flex-wrap: wrap;}
 body.manga-page .page-content-listing.single-page .listing-chapters_wrap ul.sub-chap-list, .shortcode-manga-chapters .listing-chapters_wrap ul.sub-chap-list{padding-left: 0}
@@ -9131,7 +9131,7 @@ body.manga-page .page-content-listing.single-page .listing-chapters_wrap.cols-4 
 }
 
 .listing-chapters_wrap .version-chap::-webkit-scrollbar-thumb {
-  background-color: #3b66f5;
+  background-color: #41855e;
 }
 
 .listing-chapters_wrap .version-chap {
