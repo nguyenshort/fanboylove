@@ -1,19 +1,25 @@
 const events = require('events')
 const eventEmitter = new events.EventEmitter()
 const UploadListener = require('./listeners/upload')
-
-const BackupListener = require('./listeners/backup')
+const ChapterListener = require('./listeners/chapter')
 
 function removeFile(path) {
   eventEmitter.once('REMOVE_FILE', UploadListener.removeFile)
   eventEmitter.emit('REMOVE_FILE', path)
 }
 
-function crawlChapter(chapter, story, order) {
-  eventEmitter.once('CRAWL_CHAPTER', BackupListener.downloadChapter)
-  eventEmitter.emit('CRAWL_CHAPTER', chapter, story, order)
+function clearChapterContent(content) {
+  eventEmitter.once('CLEAR_CHAPTER_CONTENT', ChapterListener.clearChapter)
+  eventEmitter.emit('CLEAR_CHAPTER_CONTENT', content)
 }
+
+function updateChapterContent(_id, oldContent, content) {
+  eventEmitter.once('UPDATE_CHAPTER_CONTENT', ChapterListener.updateChapter)
+  eventEmitter.emit('UPDATE_CHAPTER_CONTENT', _id, oldContent, content)
+}
+
 module.exports = {
   removeFile,
-  crawlChapter
+  clearChapterContent,
+  updateChapterContent
 }

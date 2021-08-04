@@ -2,7 +2,7 @@ const { ApolloError, ForbiddenError } = require('apollo-server-express')
 
 const CategoryController = require('../../controller/category.controller')
 const storyController = require('../../controller/story.controller')
-const BunnyCDN = require('../../mixins/bunnyCDN')
+const BunnyCDN = require('../../modules/bunnyCDN')
 const categoryController = require('../../controller/category.controller')
 
 module.exports = {

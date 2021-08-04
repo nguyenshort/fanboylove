@@ -6,8 +6,10 @@ const User = require('../models/User')
 const Category = require('../models/Category')
 
 const UserController = require('./user.controller')
-const BunnyCDN = require('../mixins/bunnyCDN')
+const BunnyCDN = require('../modules/bunnyCDN')
 const CHAPTER = require('../config/chapter')
+
+const Event = require('../events')
 
 class StudioController {
   constructor(user) {
@@ -300,6 +302,7 @@ class StudioController {
       throw new ApolloError('Không thể lên lịch chương đã đăng', 'NOTIFY')
     }
     await Story.findByIdAndUpdate(chapter._id, { updatedAt: Date.now() })
+    Event.updateChapterContent(chapter._id, chapter.content, content)
     return Chapter.findByIdAndUpdate(
       chapter._id,
       {
@@ -375,10 +378,14 @@ class StudioController {
         if (!story) {
           throw new ForbiddenError('Bạn không có quyền xoá truyện này')
         }
+        const chapters = await Chapter.find({ story: _id })
         await Promise.all([
           Story.findByIdAndDelete(_id),
           Chapter.deleteMany({ story: _id })
         ])
+        for (const chapter of chapters) {
+          Event.clearChapterContent(chapter.content)
+        }
         return story
       },
 
@@ -391,6 +398,7 @@ class StudioController {
         if (!story) {
           throw new ForbiddenError('Bạn không có quyền xoá truyện này')
         }
+        Event.clearChapterContent(chapter.content)
         return Chapter.findByIdAndDelete(chapter._id)
       }
     }

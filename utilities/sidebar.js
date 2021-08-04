@@ -2,7 +2,7 @@ const moment = require('moment')
 
 const storyController = require('../controller/story.controller')
 const Category = require('../models/Category')
-const BunnyCDN = require('../mixins/bunnyCDN')
+const BunnyCDN = require('../modules/bunnyCDN')
 
 module.exports = async (req, res, next) => {
   const StoryController = new storyController()

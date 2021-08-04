@@ -3,7 +3,7 @@ const router = express.Router()
 
 const storyController = require('../controller/story.controller')
 const chapterController = require('../controller/chapter.controller')
-const BunnyCDN = require('../mixins/bunnyCDN')
+const BunnyCDN = require('../modules/bunnyCDN')
 
 router.get('/truyen-tranh/:slug.:id', async ({ params }, res) => {
   const StoryController = new storyController()

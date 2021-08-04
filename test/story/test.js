@@ -5,7 +5,7 @@ const Chapter = require('../../models/Chapter')
 
 const database = require('../../database')
 database.connect()
-const bunnyCDN = require('../../mixins/bunnyCDN')
+const bunnyCDN = require('../../modules/bunnyCDN')
 const { v4: uuidv4 } = require('uuid')
 
 ;(async function f() {
@@ -44,7 +44,7 @@ const { v4: uuidv4 } = require('uuid')
       config
     )
     const BunnyCDN = new bunnyCDN(true)
-    let order = 20
+    let order = 63
     for (const chapter of Array.from(data.data.getChapters).reverse()) {
       const check = await Chapter.findOne({ story: 68, name: chapter.name })
       if (check || chapter._id === 1909) {
@@ -74,7 +74,7 @@ const { v4: uuidv4 } = require('uuid')
         const imgData = await axios.get(image.src, {
           responseType: 'stream'
         })
-        const path = `story/68/chapters/content/` + uuidv4() + '.jpg'
+        const path = `/story/68/chapters/content/` + uuidv4() + '.jpg'
         await BunnyCDN.upload(imgData.data, path)
         content.push({ content: path })
         console.log('Tạo:', path)

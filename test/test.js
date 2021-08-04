@@ -1,11 +1,13 @@
-const axios = require('axios')
+require('dotenv').config({ path: '../.env' })
+const bunnyCDN = require('../modules/bunnyCDN')
 
 ;(async () => {
   try {
-    const response = await axios.get(
-      'https://saytruyen.net/app/manga/uploads/SAYTRUYEN.jpg'
+    const BunnyCDN = new bunnyCDN(true)
+    const test = await BunnyCDN.remove(
+      '/test/content/056c93b5-0975-41c3-8216-c567a88832fb.jpg'
     )
-    console.log(response)
+    console.log(test)
   } catch (error) {
     console.log(error)
   }

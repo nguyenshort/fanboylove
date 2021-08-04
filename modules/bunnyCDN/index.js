@@ -1,6 +1,6 @@
 const axios = require('axios')
 const crypto = require('crypto')
-class BunnyCDN {
+class Index {
   constructor(secure) {
     this.AccessKey = secure
       ? process.env.BUNNY_ACCESS_KEY
@@ -11,12 +11,39 @@ class BunnyCDN {
   }
 
   async upload(data, path) {
-    return await axios.put(`${this.storage}${path}`, data, {
+    return await axios.put(this._getPath(path), data, {
       headers: {
         AccessKey: this.AccessKey,
         'Content-Type': 'image/jpeg'
       }
     })
+  }
+
+  /**
+   * Tạo path
+   * @param path
+   * @returns {string}
+   * @private
+   */
+  _getPath(path) {
+    return `${this.storage}${path}`
+  }
+
+  /**
+   * @param { String } path
+   * @returns {Promise<boolean>}
+   */
+  async remove(path) {
+    try {
+      await axios.delete(this._getPath(path), {
+        headers: {
+          AccessKey: this.AccessKey
+        }
+      })
+      return true
+    } catch (e) {
+      return false
+    }
   }
 
   static webAssets(url, secure) {
@@ -46,4 +73,4 @@ class BunnyCDN {
   }
 }
 
-module.exports = BunnyCDN
+module.exports = Index

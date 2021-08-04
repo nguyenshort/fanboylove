@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid')
-const bunnycdn = require('../mixins/bunnyCDN')
+const bunnycdn = require('../modules/bunnyCDN')
 const Event = require('../events')
 const sharp = require('sharp')
 
