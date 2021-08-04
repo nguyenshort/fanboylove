@@ -45,7 +45,8 @@ module.exports.uploadSingle = async (req, res, next) => {
       securePath = false
       image = await resizeImage(req.file, 300)
     }
-    let path1 = '/' + path + '/' + uuidv4() + '.jpg'
+    const time = new Date()
+    let path1 = `/${path}/${time.getFullYear()}/${time.getMonth()}/${time.getDay()}/${uuidv4()}.jpg`
     const BunnyCDN = new bunnycdn(securePath)
     await BunnyCDN.upload(image, path1)
     Event.removeFile(req.file.path)
