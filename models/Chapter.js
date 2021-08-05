@@ -58,6 +58,11 @@ const ChapterSchema = new mongoose.Schema({
     type: Number,
     default: Date.now(),
     index: true
+  },
+  source: {
+    type: String,
+    default: null,
+    index: true
   }
 })
 

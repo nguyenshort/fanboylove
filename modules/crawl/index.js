@@ -1,72 +1,47 @@
-const cheerio = require('cheerio')
-
-const BaseController = require('../../controller/studio.controller')
-const axios = require('axios')
+const BaseController = require('./helpers/leech')
+const StoreController = require('./helpers/store')
+const CloudController = require('./helpers/cloud')
 
 class Index extends BaseController {
   /**
    * _id = 0 là user admin mặc định
    */
   constructor() {
-    super({ _id: 0 })
-  }
-
-  static async getSite(url, headers = {}) {
-    try {
-      const { data } = await axios.get(url, {
-        headers
-      })
-      return data
-    } catch (e) {
-      return ''
-    }
-  }
-
-  load(source) {
-    this.$ = cheerio.load(source)
-  }
-
-  getAttr(selector, attr) {
-    return {
-      /**
-       * @returns {[ String ]}
-       */
-      array: () => {
-        const list = []
-        for (const link of this.$(selector)) {
-          list.push(
-            this.$(link)
-              .attr(attr || 'href')
-              .trim()
-          )
-        }
-        return list
-      },
-      single: () => {
-        return this.$(selector)
-          .attr(attr || 'href')
-          .trim()
-      }
-    }
-  }
-
-  getText(selector) {
-    return this.$(selector).text()?.trim()
+    super()
+    this.store = new StoreController()
+    this.cloud = new CloudController()
   }
 
   /**
-   * @param { [String] } array
+   * @param images
+   * @param story
+   * @param headers
+   * @returns {Promise<*[]>}
    */
-  listToContent(array) {
-    return array.map((value) => {
-      return {
-        content: value
-      }
-    })
+  async downloadListContent(images, story, headers = {}) {
+    const content = []
+    for (const image of images) {
+      console.log('Download:', image)
+      const imageContent = await this.cloud.downLoadImage(image, headers)
+      const path = this.cloud.buidPath(story).chapter()
+      content.push({
+        content: await this.cloud.upload(true, imageContent, path)
+      })
+      console.log('Uploaded:', path)
+    }
+    return content
   }
 
-  _makeChapterContent(raw) {
-    return raw
+  /**
+   * @param src
+   * @param headers
+   * @returns {Promise<string>}
+   */
+  async downloadAvatar(src, headers) {
+    const _avatarData = await this.cloud.downLoadImage(src, headers)
+    const path = this.cloud.buidPath({ _id: `avatars` }).story()
+    await this.cloud.upload(false, _avatarData, path, 300, 400)
+    return path
   }
 }
 

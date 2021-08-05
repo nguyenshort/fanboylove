@@ -233,7 +233,8 @@ class StudioController {
     avatar,
     chapContent,
     publishTime,
-    note
+    note,
+    order
   ) {
     const story = await this.story(storyID)
     if (!story) {
