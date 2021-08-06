@@ -61,8 +61,8 @@ const ChapterSchema = new mongoose.Schema({
   },
   source: {
     type: String,
-    default: null,
-    index: true
+    index: true,
+    unique: true
   }
 })
 

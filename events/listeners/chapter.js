@@ -4,18 +4,11 @@ const bunnyCDN = require('../../modules/bunnyCDN')
  * @param { [ { content: String } ] } content
  */
 module.exports.clearChapter = async (content) => {
-  try {
-    const BunnyCDN = new bunnyCDN(true)
-    const list = []
-    for (const image of content) {
-      list.push(
-        new Promise(() => {
-          BunnyCDN.remove(image.content)
-        })
-      )
-    }
-    await Promise.all(list)
-  } catch (e) {}
+  const BunnyCDN = new bunnyCDN(true)
+  for (const image of content) {
+    console.log(image.content)
+    await BunnyCDN.remove(image.content)
+  }
 }
 
 /**

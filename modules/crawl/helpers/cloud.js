@@ -34,4 +34,11 @@ module.exports = class {
     await Bunny.upload(stream, path)
     return path
   }
+
+  async removeMany(images) {
+    const Bunny = new BunnyCDN(true)
+    for (const image of images) {
+      await Bunny.remove(image.content)
+    }
+  }
 }
