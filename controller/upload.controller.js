@@ -26,7 +26,7 @@ class UploadController {
     const time = new Date()
     return `/${path}/${time.getFullYear()}/${time.getMonth() + 1}/${
       time.getDay() + 1
-    }/${uuidv4()}.jpg`
+    }/${time.getHours()}/${uuidv4()}.jpg`
   }
 
   /**
