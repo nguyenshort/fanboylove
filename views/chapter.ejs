@@ -43,12 +43,12 @@ showAds: story.adsense
                                                     <% } %>
                                                     <div class="reading-content">
                                                         <% for (let i = 0; i < chapter.content.length; i++) { %>
-                                                            <div>
+                                                            <div class="page-break no-gaps">
                                                                 <img
                                                                         data-src="<%= chapter.content[i].content ;%>"
                                                                         src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                                                                         alt="<%= chapter.name ;%>"
-                                                                        class="w-100 d-block lazyload chapter-img"
+                                                                        class="chapter-img img-responsive effect-fade lazyload w-100"
                                                                 >
                                                             </div>
                                                             <% if (story.adsense && [15, 50, 75].includes(i)) { %>
