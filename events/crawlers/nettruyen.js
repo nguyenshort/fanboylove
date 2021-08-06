@@ -35,7 +35,8 @@ module.exports = async (story, source, order) => {
               order,
               source
             )
-            console.log('Created', name)
+          } else {
+            console.log('Error Chapter', source)
           }
         }
       }
