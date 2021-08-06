@@ -52,5 +52,5 @@ app.use(function (req, res) {
   return res.status(404).render('error')
 })
 
-require('./jobs')
+// require('./jobs')
 module.exports = app
