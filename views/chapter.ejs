@@ -36,11 +36,9 @@ showAds: story.adsense
                                                     <% if (story.adsense) { %>
                                                         <%- include('includes/ads') -%>
                                                     <% } %>
-                                                    <% if (chapter.note) { %>
                                                         <div class="chapter-note">
-                                                            <%= chapter.note %>
+                                                            <%= chapter.note || 'Nhóm Mới ComeBack đừng dùng chặn quảng cáo...tội lắm!'.toUpperCase() %>
                                                         </div>
-                                                    <% } %>
                                                     <div class="reading-content">
                                                         <% for (let i = 0; i < chapter.content.length; i++) { %>
                                                             <div class="page-break no-gaps">
