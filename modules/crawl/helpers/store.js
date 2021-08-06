@@ -14,7 +14,7 @@ module.exports = class {
       source
     })
     await Story.findByIdAndUpdate(story._id, {
-      countChapter: await Chapter.find({ story }).countDocuments(),
+      countChapter: await Chapter.find({ story: story._id }).countDocuments(),
       updatedAt: Date.now()
     })
   }

@@ -22,18 +22,18 @@ class Index extends BaseController {
     const content = []
     try {
       const list = []
-      for (const image of images) {
+      for (let i = 0; i < images.length; i++) {
         list.push(
           new Promise(async (resolve, reject) => {
             try {
               const imageContent = await this.cloud.downLoadImage(
-                image,
+                images[i],
                 headers
               )
               const path = this.cloud.buidPath(story).chapter()
-              content.push({
+              content[i] = {
                 content: await this.cloud.upload(true, imageContent, path)
-              })
+              }
               resolve(path)
             } catch (e) {
               reject()
@@ -44,11 +44,9 @@ class Index extends BaseController {
       await Promise.all(list)
       return content
     } catch (e) {
-      console.log('Error', 'Cleaning....')
       await this.cloud.removeMany(content)
-      console.log('Clear', content.length, 'image')
     }
-    return content
+    return []
   }
 
   /**

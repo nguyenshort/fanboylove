@@ -27,7 +27,7 @@ module.exports = new CronJob(
       if (HTML) {
         Leech.load(HTML)
         const stories = Leech.getAttr(selector.stories, 'href').array()
-        for (const source of stories) {
+        for (const source of stories.slice(0, 8)) {
           Leech.load(await Leech.getSite(source))
           const listChapter = Leech.getAttr(selector.chapters, 'href')
             .array()
@@ -71,7 +71,6 @@ module.exports = new CronJob(
                 await deplay
               } else {
               }
-              // await lechChap(story, listChapter[i], i)
             }
           }
         }
@@ -84,46 +83,3 @@ module.exports = new CronJob(
   true,
   'Asia/Ho_Chi_Minh'
 )
-
-async function lechChap(story, source, order) {
-  try {
-    console.log('Chap', source)
-    const Leech = new crawlController()
-    const chapter = await Leech.store.exist(source).chapter()
-    if (!chapter) {
-      const chapterHTML = await Leech.getSite(source)
-      if (chapterHTML) {
-        Leech.load(chapterHTML)
-        const name = Leech.getText(selector.name)
-          .single()
-          .replace(/^-/, '')
-          .trim()
-        if (name) {
-          // lấy list image và build thành link
-          const listImages = Leech.getAttr(selector.images, 'src')
-            .array()
-            .map((value) => 'http:' + value)
-
-          if (listImages.length) {
-            const content = await Leech.downloadListContent(listImages, story, {
-              Referer: selector.Referer
-            })
-            if (content.length) {
-              await Leech.store.insertChapter(
-                story._id,
-                name,
-                '',
-                content,
-                order,
-                source
-              )
-              console.log('Created', name, content.length)
-            }
-          }
-        }
-      }
-    }
-  } catch (e) {
-    console.log(e)
-  }
-}
