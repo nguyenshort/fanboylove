@@ -36,6 +36,7 @@ class Index extends BaseController {
               }
               resolve(path)
             } catch (e) {
+              console.log(e)
               console.log('Error Image', images[i])
               reject()
             }

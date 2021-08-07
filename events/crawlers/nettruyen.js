@@ -8,6 +8,7 @@ const selector = {
 
 module.exports = async (story, source, order) => {
   try {
+    console.log(source)
     const Leech = new crawlController()
     const chapterHTML = await Leech.getSite(source)
     if (chapterHTML) {

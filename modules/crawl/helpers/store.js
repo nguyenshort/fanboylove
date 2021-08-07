@@ -13,8 +13,8 @@ module.exports = class {
       createdAt: Date.now(),
       source
     })
-    await Story.findByIdAndUpdate(story._id, {
-      countChapter: await Chapter.find({ story: story._id }).countDocuments(),
+    await Story.findByIdAndUpdate(story, {
+      countChapter: await Chapter.find({ story }).countDocuments(),
       updatedAt: Date.now()
     })
   }

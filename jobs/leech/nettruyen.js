@@ -19,7 +19,7 @@ const selector = {
 }
 
 module.exports = new CronJob(
-  '* */20 * * * *',
+  '14 54 * * * *',
   async () => {
     try {
       const Leech = new crawlController()
@@ -28,6 +28,7 @@ module.exports = new CronJob(
         Leech.load(HTML)
         const stories = Leech.getAttr(selector.stories, 'href').array()
         for (const source of stories.slice(0, 8)) {
+          console.log(source)
           Leech.load(await Leech.getSite(source))
           const listChapter = Leech.getAttr(selector.chapters, 'href')
             .array()
