@@ -27,7 +27,7 @@ module.exports = new CronJob(
       if (HTML) {
         Leech.load(HTML)
         const stories = Leech.getAttr(selector.stories, 'href').array()
-        for (const source of stories.slice(0, 8)) {
+        for (const source of stories.slice(0, 5)) {
           console.log(source)
           Leech.load(await Leech.getSite(source))
           const listChapter = Leech.getAttr(selector.chapters, 'href')
