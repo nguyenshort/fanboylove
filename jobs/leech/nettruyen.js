@@ -19,7 +19,7 @@ const selector = {
 }
 
 module.exports = new CronJob(
-  '14 54 * * * *',
+  '* */30 * * * *',
   async () => {
     try {
       const Leech = new crawlController()
