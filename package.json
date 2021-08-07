@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "build:vue": "webpack",
-    "watch:vue": "webpack --watch --progress"
+    "watch:vue": "webpack --watch --progress",
+    "stop": "pm2 stop fanboylove-web"
   },
   "dependencies": {
     "@graphql-tools/load-files": "^6.3.2",
