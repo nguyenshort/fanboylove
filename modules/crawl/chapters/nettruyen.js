@@ -27,14 +27,18 @@ module.exports = async (story, source, order) => {
             Referer: selector.Referer
           })
           if (content.length) {
-            await Leech.store.insertChapter(
-              story._id,
-              name,
-              '',
-              content,
-              order,
-              source
-            )
+            try {
+              await Leech.store.insertChapter(
+                story._id,
+                name,
+                '',
+                content,
+                order,
+                source
+              )
+            } catch (e) {
+              await Leech.cloud.removeMany(content)
+            }
           } else {
             console.log('Error Chapter', source)
           }

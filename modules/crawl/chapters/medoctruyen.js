@@ -36,7 +36,6 @@ module.exports = async (story, source) => {
           chapter_index,
           source
         )
-        console.log('Created Chapter', chapter_title)
       }
     }
   } catch (e) {
