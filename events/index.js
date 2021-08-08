@@ -2,8 +2,7 @@ const events = require('events')
 const eventEmitter = new events.EventEmitter()
 const UploadListener = require('./listeners/upload')
 const ChapterListener = require('./listeners/chapter')
-
-const LeechNetTruyen = require('./crawlers/nettruyen')
+const Leech = require('../modules/crawl/chapters')
 
 function removeFile(path) {
   eventEmitter.once('REMOVE_FILE', UploadListener.removeFile)
@@ -21,13 +20,19 @@ function updateChapterContent(_id, oldContent, content) {
 }
 
 function nettruyen(story, source, order) {
-  eventEmitter.once('LEECH_NETTRUYEN', LeechNetTruyen)
+  eventEmitter.once('LEECH_NETTRUYEN', Leech.NetTruyen)
   eventEmitter.emit('LEECH_NETTRUYEN', story, source, order)
+}
+
+function medoctruyen(story, source) {
+  eventEmitter.once('LEECH_MEDOCTRUYEN', Leech.MeDocTruyen)
+  eventEmitter.emit('LEECH_MEDOCTRUYEN', story, source)
 }
 
 module.exports = {
   removeFile,
   clearChapterContent,
   updateChapterContent,
-  nettruyen
+  nettruyen,
+  medoctruyen
 }

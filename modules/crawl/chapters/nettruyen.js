@@ -1,4 +1,4 @@
-const crawlController = require('../../modules/crawl')
+const crawlController = require('../index')
 
 const selector = {
   name: '.reading .top .txt-primary span',
@@ -8,7 +8,6 @@ const selector = {
 
 module.exports = async (story, source, order) => {
   try {
-    console.log(source)
     const Leech = new crawlController()
     const chapterHTML = await Leech.getSite(source)
     if (chapterHTML) {

@@ -53,6 +53,12 @@ module.exports = class {
     }
   }
 
+  getHTML(selector) {
+    return {
+      single: () => this.$(selector).html()
+    }
+  }
+
   /**
    * @param { [String] } array
    */
