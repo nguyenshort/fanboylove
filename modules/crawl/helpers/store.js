@@ -47,7 +47,8 @@ module.exports = class {
   exist(source) {
     return {
       story: async () => Story.findOne({ source }),
-      chapter: async () => Chapter.findOne({ source })
+      chapter: async () => Chapter.findOne({ source }),
+      title: async () => Story.findOne({ name: source })
     }
   }
 
