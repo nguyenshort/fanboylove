@@ -3,10 +3,14 @@ const database = require('../database')
 database.connect()
 
 const Chapter = require('../models/Chapter')
-const Story = require('../models/Story')
 
 async function f() {
-  await Story.updateMany({}, { team: 'Cơ Tình Các' })
+  await Chapter.create({
+    name: 0,
+    story: 1000,
+    content: [],
+    source: 'fanboylove.com'
+  })
 }
 
 f()
