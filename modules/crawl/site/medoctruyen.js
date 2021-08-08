@@ -14,6 +14,7 @@ const selector = {
 }
 
 module.exports = async () => {
+  console.log('Mê Đọc Truyên')
   try {
     const Leech = new crawlController()
     const HTML = await Leech.getSite(selector.site)

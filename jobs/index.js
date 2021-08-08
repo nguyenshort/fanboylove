@@ -1,5 +1,5 @@
 const chapterScheduler = require('./modules/chapterScheduler')
 chapterScheduler.start()
 
-const Leech = require('./modules/leech')
-Leech.nettruyen.start()
+const NetTruyen = require('./modules/nettruyen')
+NetTruyen.start()
