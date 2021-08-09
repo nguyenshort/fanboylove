@@ -8,6 +8,11 @@ module.exports = {
     return NetTruyen.importChapter(story, order)
   },
 
+  NetTruyenSlow: async (story, chapters) => {
+    const NetTruyen = new netTruyen()
+    return NetTruyen.importChaptersShow(story, chapters)
+  },
+
   MeDocTruyen: async (story, source) => {
     const MeDocTruyen = new meDocTruyen(source)
     await MeDocTruyen.init()

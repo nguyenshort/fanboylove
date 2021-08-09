@@ -432,15 +432,9 @@ class StudioController {
       await Leech.init()
       const story = await Leech.makeStory(true)
       const chapters = Leech.chapters()
-      await Leech.importChapters(story, chapters, async (chapter, index) => {
-        const deplay = new Promise((resolve) =>
-          setTimeout(() => {
-            Event.nettruyen(story, chapter, index)
-            resolve()
-          }, 6000)
-        )
-        await deplay
-      })
+      if (chapters.length) {
+        Event.nettruyenSlow(story, chapters)
+      }
       return story
     } else {
       const Leech = new medoctruyen(source)

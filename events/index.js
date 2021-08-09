@@ -24,6 +24,11 @@ function nettruyen(story, source, order) {
   eventEmitter.emit('LEECH_NETTRUYEN', story, source, order)
 }
 
+function nettruyenSlow(story, chapters) {
+  eventEmitter.once('LEECH_NETTRUYEN_SLOW', Leech.NetTruyenSlow)
+  eventEmitter.emit('LEECH_NETTRUYEN_SLOW', story, chapters)
+}
+
 function medoctruyen(story, source) {
   eventEmitter.once('LEECH_MEDOCTRUYEN', Leech.MeDocTruyen)
   eventEmitter.emit('LEECH_MEDOCTRUYEN', story, source)
@@ -34,5 +39,6 @@ module.exports = {
   clearChapterContent,
   updateChapterContent,
   nettruyen,
-  medoctruyen
+  medoctruyen,
+  nettruyenSlow
 }

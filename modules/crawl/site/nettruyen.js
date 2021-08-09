@@ -78,6 +78,16 @@ module.exports = class {
     }
   }
 
+  async importChaptersShow(story, chapters) {
+    for (let i = 0; i < chapters.length; i++) {
+      const check = await this.Leech.store.exist(chapters[i]).chapter()
+      if (!check) {
+        await this.reInit(chapters[i])
+        await this.importChapter(story, chapters)
+      }
+    }
+  }
+
   async importChapter(story, order) {
     const name = this.Leech.getText(selector.name)
       .single()
