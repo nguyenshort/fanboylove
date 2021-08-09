@@ -83,7 +83,7 @@ module.exports = class {
       const check = await this.Leech.store.exist(chapters[i]).chapter()
       if (!check) {
         await this.reInit(chapters[i])
-        await this.importChapter(story, chapters)
+        await this.importChapter(story, i)
       }
     }
   }
