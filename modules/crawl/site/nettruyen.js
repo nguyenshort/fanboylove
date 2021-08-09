@@ -69,12 +69,11 @@ module.exports = class {
     return story
   }
 
-  async importChapters(story, chapters) {
+  async importChapters(story, chapters, callback) {
     for (let i = 0; i < chapters.length; i++) {
       const check = await this.Leech.store.exist(chapters[i]).chapter()
       if (!check) {
-        await this.reInit(chapters[i])
-        await this.importChapter(story, i)
+        callback(chapters[i], i)
       }
     }
   }

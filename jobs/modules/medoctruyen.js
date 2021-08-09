@@ -15,7 +15,6 @@ module.exports = new CronJob(
       const chapters = MeDocTruyen.chapters()
       if (chapters.length) {
         const story = await MeDocTruyen.makeStory()
-        console.log(story)
         if (story) {
           return MeDocTruyen.importChapters(
             story,

@@ -2,14 +2,10 @@ const netTruyen = require('../../modules/crawl/site/nettruyen')
 const meDocTruyen = require('../../modules/crawl/site/medoctruyen')
 
 module.exports = {
-  NetTruyen: async (story, source) => {
+  NetTruyen: async (story, source, order) => {
     const NetTruyen = new netTruyen(source)
     await NetTruyen.init()
-    const chapters = NetTruyen.chapters()
-    if (chapters.length) {
-      const story = await NetTruyen.makeStory()
-      await NetTruyen.importChapters(story, chapters)
-    }
+    return NetTruyen.importChapter(story, order)
   },
 
   MeDocTruyen: async (story, source) => {

@@ -30,7 +30,6 @@ class Index extends BaseController {
       }
       return content
     } catch (e) {
-      console.log(e)
       await this.cloud.removeMany(content)
     }
     return []
