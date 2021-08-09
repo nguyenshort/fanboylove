@@ -6,3 +6,6 @@ NetTruyen.start()
 
 const MeDocTruyen = require('./modules/medoctruyen')
 MeDocTruyen.start()
+
+const MangaXY = require('./modules/mangaxy')
+MangaXY.start()

@@ -1,5 +1,6 @@
 const netTruyen = require('../../modules/crawl/site/nettruyen')
 const meDocTruyen = require('../../modules/crawl/site/medoctruyen')
+const mangaXY = require('../../modules/crawl/site/mangaxy')
 
 module.exports = {
   NetTruyen: async (story, source, order) => {
@@ -17,5 +18,11 @@ module.exports = {
     const MeDocTruyen = new meDocTruyen(source)
     await MeDocTruyen.init()
     return MeDocTruyen.importChapter(story)
+  },
+
+  MangaXY: async (story, source, order) => {
+    const Manga = new mangaXY(source)
+    await Manga.init()
+    return Manga.importChapter(story, order)
   }
 }

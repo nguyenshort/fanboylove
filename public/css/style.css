@@ -9554,3 +9554,14 @@ input.crop-button {
   border-top-right-radius: 8px;
   font-size: 16px;
 }
+.page-break {
+  position: relative;
+}
+.page-break:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}

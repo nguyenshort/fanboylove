@@ -13,6 +13,7 @@ const Event = require('../events')
 
 const nettruyen = require('../modules/crawl/site/nettruyen')
 const medoctruyen = require('../modules/crawl/site/medoctruyen')
+const mangaxy = require('../modules/crawl/site/mangaxy')
 
 class StudioController {
   constructor(user) {
@@ -436,7 +437,7 @@ class StudioController {
         Event.nettruyenSlow(story, chapters)
       }
       return story
-    } else {
+    } else if (site === 'medoctruyen') {
       const Leech = new medoctruyen(source)
       await Leech.init()
       const story = await Leech.makeStory(true)
@@ -452,6 +453,27 @@ class StudioController {
           await deplay
         }
       })
+      return story
+    } else {
+      const Leech = new mangaxy(source)
+      await Leech.init()
+      const story = await Leech.makeStory(true)
+      const chapters = Leech.chapters()
+      await Leech.importChapters(
+        story,
+        chapters,
+        async (chapter, check, index) => {
+          if (!check) {
+            const deplay = new Promise((resolve) =>
+              setTimeout(() => {
+                Event.mangaXY(story, chapter, index)
+                resolve()
+              }, 100)
+            )
+            await deplay
+          }
+        }
+      )
       return story
     }
   }

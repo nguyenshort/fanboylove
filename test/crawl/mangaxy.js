@@ -1,36 +1,19 @@
 require('dotenv').config({ path: '../../.env' })
 
-const crawlController = require('../../modules/crawl')
+const Event = require('../../events')
 
 const database = require('../../database')
 database.connect()
-;(async function f() {
-  try {
-    const HTML = await crawlController.getSite(
-      'https://mangaxy.com/tai-ha-la-than-tinh-yeu-14913/'
-    )
-    if (HTML) {
-      const Crawl = new crawlController()
-      Crawl.load(HTML)
-      const listChapter = Crawl.getAttr(
-        '.episodes-wrap.matrix .episode-item'
-      ).array()
-      for (const chapter of listChapter.reverse()) {
-        const chapterHTML = await crawlController.getSite(chapter)
-        // reload cheerio
-        Crawl.load(chapterHTML)
-        const listIMG = Crawl.getAttr(
-          '.reading-detail .page-chapter img',
-          'src'
-        ).array()
-        const content = Crawl.listToContent(listIMG)
-        const name = Crawl.getText('#chapnum')
-        await Crawl.createChapter(87, name, '', '', content)
-        console.log('Create', name, content.length)
-      }
-      console.log('Done')
+
+const mangaXY = require('../../modules/crawl/site/mangaxy')
+;(async function () {
+  const Manga = new mangaXY('https://mangaxy.com/')
+  await Manga.init()
+  const story = await Manga.makeStory(true)
+  const chapters = Manga.chapters()
+  chapters.forEach((value, index) => {
+    if (index === 0) {
+      Event.mangaXY(story, value, index)
     }
-  } catch (e) {
-    console.log(e)
-  }
+  })
 })()

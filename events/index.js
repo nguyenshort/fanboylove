@@ -34,11 +34,17 @@ function medoctruyen(story, source) {
   eventEmitter.emit('LEECH_MEDOCTRUYEN', story, source)
 }
 
+function mangaXY(story, source, order) {
+  eventEmitter.once('LEECH_MANGAXY', Leech.MangaXY)
+  eventEmitter.emit('LEECH_MANGAXY', story, source, order)
+}
+
 module.exports = {
   removeFile,
   clearChapterContent,
   updateChapterContent,
   nettruyen,
   medoctruyen,
-  nettruyenSlow
+  nettruyenSlow,
+  mangaXY
 }

@@ -1,7 +1,7 @@
 const CronJob = require('cron').CronJob
 
 const netTruyen = require('../../modules/crawl/site/nettruyen')
-const Event = require('../../events')
+// const Event = require('../../events')
 
 const SITE = 'http://www.nettruyenvip.com/tim-truyen/dam-my'
 
@@ -17,7 +17,8 @@ module.exports = new CronJob(
       const chapters = NetTruyen.chapters()
       if (chapters.length) {
         const story = await NetTruyen.makeStory()
-        await NetTruyen.importChapters(
+        await NetTruyen.importChaptersShow(story, chapters)
+        /*await NetTruyen.importChapters(
           story,
           chapters,
           async (chapter, index) => {
@@ -29,7 +30,7 @@ module.exports = new CronJob(
             )
             await deplay
           }
-        )
+        )*/
       }
     }
   },

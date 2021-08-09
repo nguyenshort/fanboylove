@@ -41,7 +41,7 @@ module.exports = class {
       single: () => {
         return this.$(selector)
           .attr(attr || 'href')
-          .trim()
+          ?.trim()
       }
     }
   }
