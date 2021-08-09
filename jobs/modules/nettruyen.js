@@ -25,7 +25,7 @@ module.exports = new CronJob(
               setTimeout(() => {
                 Event.nettruyen(story, chapter, index)
                 resolve()
-              }, 10000)
+              }, 20000)
             )
             await deplay
           }
