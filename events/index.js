@@ -19,9 +19,9 @@ function updateChapterContent(_id, oldContent, content) {
   eventEmitter.emit('UPDATE_CHAPTER_CONTENT', _id, oldContent, content)
 }
 
-function nettruyen(story, source, order) {
+function nettruyen(story, source) {
   eventEmitter.once('LEECH_NETTRUYEN', Leech.NetTruyen)
-  eventEmitter.emit('LEECH_NETTRUYEN', story, source, order)
+  eventEmitter.emit('LEECH_NETTRUYEN', story, source)
 }
 
 function medoctruyen(story, source) {
