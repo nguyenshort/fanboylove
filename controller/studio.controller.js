@@ -437,7 +437,7 @@ class StudioController {
           setTimeout(() => {
             Event.nettruyen(story, chapter, index)
             resolve()
-          }, 4000)
+          }, 6000)
         )
         await deplay
       })
