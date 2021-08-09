@@ -2,7 +2,7 @@ const events = require('events')
 const eventEmitter = new events.EventEmitter()
 const UploadListener = require('./listeners/upload')
 const ChapterListener = require('./listeners/chapter')
-const Leech = require('../modules/crawl/chapters')
+const Leech = require('./listeners/leech')
 
 function removeFile(path) {
   eventEmitter.once('REMOVE_FILE', UploadListener.removeFile)

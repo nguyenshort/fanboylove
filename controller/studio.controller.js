@@ -11,6 +11,9 @@ const CHAPTER = require('../config/chapter')
 
 const Event = require('../events')
 
+const nettruyen = require('../modules/crawl/site/nettruyen')
+const medoctruyen = require('../modules/crawl/site/medoctruyen')
+
 class StudioController {
   constructor(user) {
     if (!user) {
@@ -415,6 +418,58 @@ class StudioController {
       i--
     }
     return true
+  }
+
+  async importStory(site, source) {
+    if (!['nettruyen', 'medoctruyen'].includes(site)) {
+      throw new ApolloError('Nguồn Trang Không Hợp Lệ')
+    }
+    if (!/^http(s?):\/\//.test(source)) {
+      throw new ApolloError('Link Truyện Không Hợp Lệ')
+    }
+    if (site === 'nettruyen') {
+      const Leech = new nettruyen(source)
+      await Leech.init()
+      const story = await Leech.makeStory(true)
+      const chapters = Leech.chapters()
+      await Leech.importChapters(
+        story,
+        chapters,
+        async (chapter, check, index) => {
+          if (!check) {
+            const deplay = new Promise((resolve) =>
+              setTimeout(() => {
+                Event.nettruyen(story, chapter, index)
+                resolve()
+              }, 100)
+            )
+            await deplay
+          }
+        }
+      )
+      return story
+    } else {
+      const Leech = new medoctruyen(source)
+      await Leech.init()
+      const story = await Leech.makeStory(true)
+      const chapters = Leech.chapters()
+      await Leech.importChapters(
+        story,
+        chapters,
+        async (chapter, check, index) => {
+          if (!check) {
+            const deplay = new Promise((resolve) =>
+              setTimeout(() => {
+                Event.medoctruyen(story, chapter)
+                resolve()
+              }, 100)
+            )
+            await deplay
+          }
+        }
+      )
+      return story
+    }
   }
 }
 

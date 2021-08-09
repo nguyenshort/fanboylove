@@ -10,35 +10,95 @@ const selector = {
   author: '#title + .other_infos > div:first-child font',
   content: '.other_infos .summary',
   category: '.detail_infos .other_infos > div a',
-  Referer: 'https://www.medoctruyentranh.net/'
+  Referer: 'https://www.medoctruyentranh.net/',
+  data: '#__NEXT_DATA__',
+  chapters: '.chapters a'
 }
 
-module.exports = async () => {
-  try {
-    const Leech = new crawlController()
-    const HTML = await Leech.getSite(selector.site)
-    Leech.load(HTML)
-    const stories = Leech.getAttr(selector.stories, 'href').array()
-    for (const source of stories) {
-      Leech.load(await Leech.getSite(source))
-      let story = await Leech.store.exist(source).story()
-      if (story) {
-        const listChapter = Leech.getAttr('.chapters a', 'href').array()
-        for (const chapter of listChapter) {
-          const check = await Leech.store.exist(chapter).chapter()
-          if (!check) {
-            const deplay = new Promise((resolve) =>
-              setTimeout(() => {
-                Event.medoctruyen(story, chapter)
-                resolve()
-              }, 3000)
-            )
-            await deplay
+module.exports = class MeDocTruyen {
+  constructor(source) {
+    this.Leech = new crawlController()
+    this.source = source
+  }
+
+  async init() {
+    const HTML = await this.Leech.getSite(this.source)
+    return this.Leech.load(HTML)
+  }
+
+  async reInit(source) {
+    this.source = source
+    await this.init()
+  }
+
+  stories() {
+    return this.Leech.getAttr(selector.stories, 'href').array()
+  }
+
+  chapters() {
+    return this.Leech.getAttr(selector.chapters, 'href').array()
+  }
+
+  async makeStory(create) {
+    let story = await this.Leech.store.exist(this.source).story()
+    if (!story && create) {
+      const avatar = this.Leech.getAttr(selector.avatar, 'src').single()
+      const title = this.Leech.getText(selector.title).single()
+      const team = this.Leech.getText(selector.team).single()
+      const author = this.Leech.getText(selector.author).single()
+      const content = this.Leech.getText(selector.content)
+        .single()
+        ?.replace('Xem thêm', '')
+        ?.trim()
+      const listcategory = this.Leech.getText(selector.category).array()
+      const categories = await this.Leech.store.makeListCategories(listcategory)
+      story = await this.Leech.store.insertStory(
+        title,
+        '',
+        author,
+        team,
+        avatar,
+        content,
+        categories,
+        this.source
+      )
+    }
+    return story
+  }
+
+  async importChapters(story, chapters, callback) {
+    for (const chapter of chapters) {
+      const check = await this.Leech.store.exist(chapter).chapter()
+      callback(chapter, check)
+    }
+  }
+
+  async importChapter(story) {
+    const data = this.Leech.getHTML(selector.data).single()
+    if (data) {
+      const {
+        props: {
+          pageProps: {
+            initialState: {
+              read: { detail_item }
+            }
           }
         }
-      }
+      } = JSON.parse(data)
+      const { chapter_title, chapter_index, elements } = detail_item
+      const content = elements.map((value) => {
+        return {
+          content: value.content
+        }
+      })
+      await this.Leech.store.insertChapter(
+        story._id,
+        chapter_title,
+        '',
+        content,
+        chapter_index,
+        this.source
+      )
     }
-  } catch (e) {
-    console.log('Error when crawl medoctruyen')
   }
 }

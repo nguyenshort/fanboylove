@@ -1,5 +1,5 @@
 const crawlController = require('../index')
-const Event = require('../../../events')
+
 const selector = {
   chapters: '#item-detail .chapter a',
   avatar: '.col-image img',
@@ -15,62 +15,103 @@ const selector = {
   images: '.reading-detail .page-chapter img'
 }
 
-module.exports = async () => {
-  try {
-    const Leech = new crawlController()
-    const HTML = await Leech.getSite(selector.site)
-    if (HTML) {
-      Leech.load(HTML)
-      const stories = Leech.getAttr(selector.stories, 'href').array()
-      for (const source of stories.slice(0, 5)) {
-        Leech.load(await Leech.getSite(source))
-        const listChapter = Leech.getAttr(selector.chapters, 'href')
-          .array()
-          .reverse()
-        if (listChapter.length) {
-          let story = await Leech.store.exist(source).story()
-          if (!story) {
-            const title = Leech.getText(selector.title).single()
-            // avatar mặc định
-            let avatar = '/'
-            const avatarLink = Leech.getAttr(selector.avatar, 'src').single()
-            if (avatarLink) {
-              avatar = await Leech.downloadAvatar('http:' + avatarLink, {
-                Referer: selector.Referer
-              })
-            }
-            const content = Leech.getText(selector.content).single()
-            const listCate = Leech.getText(selector.categories).array()
-            const categories = await Leech.store.makeListCategories(listCate)
-            const author = Leech.getText(selector.author).single()
-            story = await Leech.store.insertStory(
-              title,
+module.exports = class {
+  constructor(source) {
+    this.Leech = new crawlController()
+    this.source = source
+  }
+
+  async init() {
+    const HTML = await this.Leech.getSite(this.source)
+    return this.Leech.load(HTML)
+  }
+
+  async reInit(source) {
+    this.source = source
+    await this.init()
+  }
+
+  stories() {
+    return this.Leech.getAttr(selector.stories, 'href').array()
+  }
+
+  chapters() {
+    return this.Leech.getAttr(selector.chapters, 'href').array().reverse()
+  }
+
+  async makeStory() {
+    let story = await this.Leech.store.exist(this.source).story()
+    if (!story) {
+      const title = this.Leech.getText(selector.title).single()
+      // avatar mặc định
+      let avatar = '/'
+      const avatarLink = this.Leech.getAttr(selector.avatar, 'src').single()
+      if (avatarLink) {
+        avatar = await this.Leech.downloadAvatar('http:' + avatarLink, {
+          Referer: selector.Referer
+        })
+      }
+      const content = this.Leech.getText(selector.content).single()
+      const listCate = this.Leech.getText(selector.categories).array()
+      const categories = await this.Leech.store.makeListCategories(listCate)
+      const author = this.Leech.getText(selector.author).single()
+      story = await this.Leech.store.insertStory(
+        title,
+        '',
+        author,
+        '',
+        avatar,
+        content,
+        categories,
+        this.source
+      )
+    }
+    return story
+  }
+
+  async importChapters(story, chapters, callback) {
+    for (let i = 0; i < chapters.length; i++) {
+      const check = await this.Leech.store.exist(chapters[i]).chapter()
+      callback(chapters[i], check, i)
+    }
+  }
+
+  async importChapter(story, order) {
+    const name = this.Leech.getText(selector.name)
+      .single()
+      .replace(/^-/, '')
+      .trim()
+    if (name) {
+      // lấy list image và build thành link
+      const listImages = this.Leech.getAttr(selector.images, 'src')
+        .array()
+        .map((value) => 'http:' + value)
+
+      if (listImages.length) {
+        const content = await this.Leech.downloadListContent(
+          listImages,
+          story,
+          {
+            Referer: selector.Referer
+          }
+        )
+        if (content.length) {
+          try {
+            await this.Leech.store.insertChapter(
+              story._id,
+              name,
               '',
-              author,
-              '',
-              avatar,
               content,
-              categories,
-              source
+              order,
+              this.source
             )
+          } catch (e) {
+            await this.Leech.cloud.removeMany(content)
           }
-          for (let i = 0; i < listChapter.length; i++) {
-            const check = await Leech.store.exist(listChapter[i]).chapter()
-            if (!check) {
-              const deplay = new Promise((resolve) =>
-                setTimeout(() => {
-                  Event.nettruyen(story, listChapter[i], i)
-                  resolve()
-                }, 4000)
-              )
-              await deplay
-            } else {
-            }
-          }
+        } else {
+          console.log('Error Chapter', this.source)
         }
       }
     }
-  } catch (e) {
-    console.log('Error when publish Chapter')
   }
 }

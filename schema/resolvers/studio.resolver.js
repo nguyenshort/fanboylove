@@ -133,6 +133,11 @@ module.exports = {
     sortMyChapters: async (_, { _id, ids }, { user }) => {
       const studioController = new StudioController(user)
       return studioController.sort(_id, ids)
+    },
+
+    importStory: async (_, { site, source }, { user }) => {
+      const studioController = new StudioController(user)
+      return studioController.importStory(site, source)
     }
   }
 }

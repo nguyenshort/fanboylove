@@ -6,7 +6,6 @@ const bunnyCDN = require('../../modules/bunnyCDN')
 module.exports.clearChapter = async (content) => {
   const BunnyCDN = new bunnyCDN(true)
   for (const image of content) {
-    console.log(image.content)
     await BunnyCDN.remove(image.content)
   }
 }

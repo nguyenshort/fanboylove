@@ -16,7 +16,7 @@ module.exports = class {
     const time = new Date()
     const _base = `/${time.getFullYear()}/${time.getMonth() + 1}/${
       time.getDay() + 1
-    }/${time.getHours()}/${uuidv4()}.jpg`
+    }/${time.getHours()}/${uuidv4()}.webp`
     return {
       story: () => '/leech/' + story._id + _base,
       chapter: () => '/leech/' + story._id + '/chapters' + _base

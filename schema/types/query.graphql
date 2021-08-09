@@ -36,4 +36,7 @@ type Mutation {
     deleteStory(_id: Float!): Story
     deleteChapter(_id: Float!): Chapter
     sortMyChapters(_id: Float! ids: [Float!]): Boolean
+
+    "Leech"
+    importStory(site: String!, source: String!): Story
 }

@@ -13,6 +13,7 @@ class UploadController {
    */
   async _resizeImage(file, width, height) {
     return await sharp(file.path)
+      .webp({})
       .resize(width, height, { fit: 'cover' })
       .toBuffer()
   }
@@ -26,7 +27,7 @@ class UploadController {
     const time = new Date()
     return `/${path}/${time.getFullYear()}/${time.getMonth() + 1}/${
       time.getDay() + 1
-    }/${time.getHours()}/${uuidv4()}.jpg`
+    }/${time.getHours()}/${uuidv4()}.webp`
   }
 
   /**
@@ -75,7 +76,7 @@ class UploadController {
       securePath = false
     } else if (path.match('chapters/content')) {
       // nội dung chap
-      image = await this._resizeImage(file, 800)
+      image = await this._resizeImage(file, 1000)
       securePath = true
     } else if (path.match('banners')) {
       // bình luận

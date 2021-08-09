@@ -1,6 +1,12 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 module.exports = class {
+  constructor() {}
+
+  async init(url, headers = {}) {
+    return this.load(await this.getSite(url, headers))
+  }
+
   async getSite(url, headers = {}) {
     try {
       const { data } = await axios.get(url, {

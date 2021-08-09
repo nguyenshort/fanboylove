@@ -32,7 +32,7 @@ class Index extends BaseController {
               )
               const path = this.cloud.buidPath(story).chapter()
               content[i] = {
-                content: await this.cloud.upload(true, imageContent, path)
+                content: await this.cloud.upload(true, imageContent, path, 1000)
               }
               resolve(path)
             } catch (e) {
