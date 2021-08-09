@@ -432,40 +432,32 @@ class StudioController {
       await Leech.init()
       const story = await Leech.makeStory(true)
       const chapters = Leech.chapters()
-      await Leech.importChapters(
-        story,
-        chapters,
-        async (chapter, check, index) => {
-          const deplay = new Promise((resolve) =>
-            setTimeout(() => {
-              Event.nettruyen(story, chapter, index)
-              resolve()
-            }, 4000)
-          )
-          await deplay
-        }
-      )
+      await Leech.importChapters(story, chapters, async (chapter, index) => {
+        const deplay = new Promise((resolve) =>
+          setTimeout(() => {
+            Event.nettruyen(story, chapter, index)
+            resolve()
+          }, 4000)
+        )
+        await deplay
+      })
       return story
     } else {
       const Leech = new medoctruyen(source)
       await Leech.init()
       const story = await Leech.makeStory(true)
       const chapters = Leech.chapters()
-      await Leech.importChapters(
-        story,
-        chapters,
-        async (chapter, check, index) => {
-          if (!check) {
-            const deplay = new Promise((resolve) =>
-              setTimeout(() => {
-                Event.medoctruyen(story, chapter)
-                resolve()
-              }, 100)
-            )
-            await deplay
-          }
+      await Leech.importChapters(story, chapters, async (chapter, check) => {
+        if (!check) {
+          const deplay = new Promise((resolve) =>
+            setTimeout(() => {
+              Event.medoctruyen(story, chapter)
+              resolve()
+            }, 100)
+          )
+          await deplay
         }
-      )
+      })
       return story
     }
   }
