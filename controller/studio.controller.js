@@ -422,7 +422,7 @@ class StudioController {
   }
 
   async importStory(site, source) {
-    if (!['nettruyen', 'medoctruyen'].includes(site)) {
+    if (!['nettruyen', 'medoctruyen', 'mangaxy'].includes(site)) {
       throw new ApolloError('Nguồn Trang Không Hợp Lệ')
     }
     if (!/^http(s?):\/\//.test(source)) {
