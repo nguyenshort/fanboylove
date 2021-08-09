@@ -108,6 +108,7 @@ module.exports = class {
               this.source
             )
           } catch (e) {
+            console.log(e)
             await this.Leech.cloud.removeMany(content)
           }
         }

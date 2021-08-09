@@ -24,12 +24,15 @@ class Index extends BaseController {
       for (let i = 0; i < images.length; i++) {
         const imageContent = await this.cloud.downLoadImage(images[i], headers)
         const path = this.cloud.buidPath(story).chapter()
+        console.log('Downloading', images[0])
         content[i] = {
           content: await this.cloud.upload(true, imageContent, path, 1000)
         }
+        console.log('Uploaded', path)
       }
       return content
     } catch (e) {
+      console.log(e)
       await this.cloud.removeMany(content)
     }
     return []
