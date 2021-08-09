@@ -3,14 +3,16 @@ const database = require('../database')
 database.connect()
 
 const Chapter = require('../models/Chapter')
+const Story = require('../models/Story')
 
 async function f() {
-  await Chapter.create({
-    name: 0,
-    story: 1000,
-    content: [],
-    source: 'fanboylove.com'
-  })
+  const stories = await Story.find({ source: { $exists: true } })
+  for (let story of stories) {
+    await Promise.all([
+      Story.findByIdAndRemove(story._id),
+      Chapter.deleteMany({ story: story._id })
+    ])
+  }
 }
 
 f()

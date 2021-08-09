@@ -11,7 +11,7 @@ module.exports = new CronJob(
     const NetTruyen = new netTruyen(SITE)
     await NetTruyen.init()
     const stories = NetTruyen.stories()
-    for (const source of stories.slice(0, 5)) {
+    for (const source of stories.slice(0, 4)) {
       // load lại Leech
       await NetTruyen.reInit(source)
       const chapters = NetTruyen.chapters()
@@ -26,7 +26,7 @@ module.exports = new CronJob(
                 setTimeout(() => {
                   Event.nettruyen(story, chapter, index)
                   resolve()
-                }, 3000)
+                }, 5000)
               )
               await deplay
             }
