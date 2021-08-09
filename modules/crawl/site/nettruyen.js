@@ -105,6 +105,7 @@ module.exports = class {
               order,
               this.source
             )
+            console.log('Created chapter', name)
           } catch (e) {
             await this.Leech.cloud.removeMany(content)
           }

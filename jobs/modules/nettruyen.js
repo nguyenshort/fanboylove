@@ -6,7 +6,7 @@ const Event = require('../../events')
 const SITE = 'http://www.nettruyenvip.com/tim-truyen/dam-my'
 
 module.exports = new CronJob(
-  '0 */30 * * * *',
+  '0 13 * * * *',
   async () => {
     const NetTruyen = new netTruyen(SITE)
     await NetTruyen.init()
@@ -17,7 +17,7 @@ module.exports = new CronJob(
       const chapters = NetTruyen.chapters()
       if (chapters.length) {
         const story = await NetTruyen.makeStory()
-        return NetTruyen.importChapters(
+        await NetTruyen.importChapters(
           story,
           chapters,
           async (chapter, exist, index) => {

@@ -21,31 +21,17 @@ class Index extends BaseController {
   async downloadListContent(images, story, headers = {}) {
     const content = []
     try {
-      const list = []
       for (let i = 0; i < images.length; i++) {
-        list.push(
-          new Promise(async (resolve, reject) => {
-            try {
-              const imageContent = await this.cloud.downLoadImage(
-                images[i],
-                headers
-              )
-              const path = this.cloud.buidPath(story).chapter()
-              content[i] = {
-                content: await this.cloud.upload(true, imageContent, path, 1000)
-              }
-              resolve(path)
-            } catch (e) {
-              console.log(e)
-              console.log('Error Image', images[i])
-              reject()
-            }
-          })
-        )
+        const imageContent = await this.cloud.downLoadImage(images[i], headers)
+        const path = this.cloud.buidPath(story).chapter()
+        content[i] = {
+          content: await this.cloud.upload(true, imageContent, path, 1000)
+        }
+        console.log('Uploaded', path)
       }
-      await Promise.all(list)
       return content
     } catch (e) {
+      console.log(e)
       await this.cloud.removeMany(content)
     }
     return []
