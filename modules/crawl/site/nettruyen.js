@@ -69,10 +69,13 @@ module.exports = class {
     return story
   }
 
-  async importChapters(story, chapters, callback) {
+  async importChapters(story, chapters) {
     for (let i = 0; i < chapters.length; i++) {
       const check = await this.Leech.store.exist(chapters[i]).chapter()
-      callback(chapters[i], check, i)
+      if (!check) {
+        await this.reInit(chapters[i])
+        await this.importChapter(story, i)
+      }
     }
   }
 
@@ -105,12 +108,9 @@ module.exports = class {
               order,
               this.source
             )
-            console.log('Created chapter', name)
           } catch (e) {
             await this.Leech.cloud.removeMany(content)
           }
-        } else {
-          console.log('Error Chapter', this.source)
         }
       }
     }
