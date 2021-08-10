@@ -13,7 +13,7 @@ class UploadController {
    */
   async _resizeImage(file, width, height) {
     return await sharp(file.path)
-      .webp({})
+      .jpeg({})
       .resize(width, height, { fit: 'cover' })
       .toBuffer()
   }
@@ -27,7 +27,7 @@ class UploadController {
     const time = new Date()
     return `/${path}/${time.getFullYear()}/${time.getMonth() + 1}/${
       time.getDay() + 1
-    }/${time.getHours()}/${uuidv4()}.webp`
+    }/${time.getHours()}/${uuidv4()}.jpeg`
   }
 
   /**
