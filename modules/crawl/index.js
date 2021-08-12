@@ -27,7 +27,6 @@ class Index extends BaseController {
         content[i] = {
           content: await this.cloud.upload(true, imageContent, path, 1000)
         }
-        console.log('Uploaded', path)
       }
       return content
     } catch (e) {

@@ -4,7 +4,7 @@ const Event = require('../../events')
 
 const SITE = 'https://www.medoctruyentranh.net/tim-truyen/dam-my/'
 module.exports = new CronJob(
-  '0 11 * * * *',
+  '0 18 * * * *',
   async () => {
     const MeDocTruyen = new meDocTruyen(SITE)
     await MeDocTruyen.init()

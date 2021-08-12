@@ -104,10 +104,13 @@ module.exports = class MeDocTruyen {
       } = JSON.parse(data)
       const { chapter_title, chapter_index, elements } = detail_item
       if (elements.length) {
-        elements.map((value) => value.content)
-        const content = await this.Leech.downloadListContent(elements, story, {
-          Referer: selector.Referer
-        })
+        const content = await this.Leech.downloadListContent(
+          elements.map((value) => value.content),
+          story,
+          {
+            Referer: selector.Referer
+          }
+        )
         if (content.length) {
           await this.Leech.store.insertChapter(
             story._id,
