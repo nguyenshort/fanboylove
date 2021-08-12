@@ -43,13 +43,7 @@ module.exports = class MeDocTruyen {
     let story = await this.Leech.store.exist(this.source).story()
     if (!story && create) {
       // avatar mặc định
-      let avatar = '/'
-      const avatarLink = this.Leech.getAttr(selector.avatar, 'src').single()
-      if (avatarLink) {
-        avatar = await this.Leech.downloadAvatar('http:' + avatarLink, {
-          Referer: selector.Referer
-        })
-      }
+      const avatar = this.Leech.getAttr(selector.avatar, 'src').single()
       const title = this.Leech.getText(selector.title).single()
       const team = this.Leech.getText(selector.team).single()
       const author = this.Leech.getText(selector.author).single()

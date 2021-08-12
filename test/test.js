@@ -1,13 +1,10 @@
 require('dotenv').config({ path: '../.env' })
-const Story = require('../models/Story')
-const db = require('../database')
-db.connect()
+const medoctruyen = require('../modules/crawl/site/nettruyen')
+
 ;(async () => {
-  const stories = await Story.find({
-    source: {
-      $regex: 'medoctruyen',
-      $options: 'i'
-    }
-  })
-  console.log(stories)
+  const Leech = new medoctruyen(
+    'http://www.nettruyenvip.com/truyen-tranh/ngo-xa/chap-1/748417'
+  )
+  await Leech.init()
+  console.log(Leech.Leech.$.html())
 })()

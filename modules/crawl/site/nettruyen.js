@@ -97,7 +97,7 @@ module.exports = class {
       // lấy list image và build thành link
       const listImages = this.Leech.getAttr(selector.images, 'src')
         .array()
-        .map((value) => 'http:' + value)
+        .map((value) => (/http|https/.test(value) ? value : 'http:' + value))
 
       if (listImages.length) {
         const content = await this.Leech.downloadListContent(
