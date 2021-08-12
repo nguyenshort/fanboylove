@@ -1,8 +1,6 @@
 const CronJob = require('cron').CronJob
 
 const netTruyen = require('../../modules/crawl/site/nettruyen')
-// const Event = require('../../events')
-
 const SITE = 'http://www.nettruyenvip.com/tim-truyen/dam-my'
 
 module.exports = new CronJob(
