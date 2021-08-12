@@ -6,7 +6,7 @@ const netTruyen = require('../../modules/crawl/site/nettruyen')
 const SITE = 'http://www.nettruyenvip.com/tim-truyen/dam-my'
 
 module.exports = new CronJob(
-  '0 */25 * * * *',
+  '0 */10 * * * *',
   async () => {
     const NetTruyen = new netTruyen(SITE)
     await NetTruyen.init()
