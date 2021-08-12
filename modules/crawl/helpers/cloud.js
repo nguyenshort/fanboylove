@@ -2,10 +2,14 @@ const axios = require('axios')
 const { v4: uuidv4 } = require('uuid')
 const resize = require('./resize')
 const BunnyCDN = require('../../bunnyCDN')
+const https = require('https')
 
 module.exports = class {
   async downLoadImage(src, headers = {}) {
     const { data } = await axios.get(src, {
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: false
+      }),
       headers,
       responseType: 'arraybuffer'
     })

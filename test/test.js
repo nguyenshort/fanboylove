@@ -1,10 +1,18 @@
 require('dotenv').config({ path: '../.env' })
-const medoctruyen = require('../modules/crawl/site/nettruyen')
+const axios = require('axios')
+const https = require('https')
 
 ;(async () => {
-  const Leech = new medoctruyen(
-    'http://www.nettruyenvip.com/truyen-tranh/ngo-xa/chap-1/748417'
+  const data = await axios.get(
+    'http://truyengroup.net/data/images/27158/542762/001-fix.jpg?data=net',
+    {
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: false
+      }),
+      headers: {
+        Referer: 'http://www.nettruyenvip.com/'
+      }
+    }
   )
-  await Leech.init()
-  console.log(Leech.Leech.$.html())
+  console.log(data)
 })()
