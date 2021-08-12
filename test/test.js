@@ -1,14 +1,13 @@
 require('dotenv').config({ path: '../.env' })
-const bunnyCDN = require('../modules/bunnyCDN')
-
+const Story = require('../models/Story')
+const db = require('../database')
+db.connect()
 ;(async () => {
-  try {
-    const BunnyCDN = new bunnyCDN(true)
-    const test = await BunnyCDN.remove(
-      '/test/content/056c93b5-0975-41c3-8216-c567a88832fb.jpg'
-    )
-    console.log(test)
-  } catch (error) {
-    console.log(error)
-  }
+  const stories = await Story.find({
+    source: {
+      $regex: 'medoctruyen',
+      $options: 'i'
+    }
+  })
+  console.log(stories)
 })()

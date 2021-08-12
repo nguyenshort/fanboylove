@@ -14,5 +14,6 @@ module.exports = async (req, res, next) => {
   res.locals.categories = categories
   res.locals.webAssets = BunnyCDN.webAssets
   res.locals.moment = moment
+  res.locals.lightTheme = !!req.cookies.lightTheme
   next()
 }

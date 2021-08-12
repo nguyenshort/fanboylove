@@ -13,6 +13,9 @@ Vue.prototype.$moment = moment
 import VueCropper from 'vue-cropperjs'
 Vue.component('VueCropper', VueCropper)
 
+import VueKonva from 'vue-konva'
+Vue.use(VueKonva)
+
 Vue.component('LoopInfinite', require('./components/LoopInfinite.vue').default)
 Vue.component(
   'CategoryInfinite',
@@ -28,6 +31,7 @@ Vue.component('LoginModal', require('./components/LoginModal.vue').default)
 Vue.component('SignUpModal', require('./components/SignUpModal.vue').default)
 Vue.component('RelatedManga', require('./components/RelatedManga.vue').default)
 Vue.component('TabBar', require('./components/settings/TabBar.vue').default)
+Vue.component('ChapterView', require('./components/ChapterView.vue').default)
 
 import router from './plugins/routes'
 import apolloProvider from './plugins/apollo'

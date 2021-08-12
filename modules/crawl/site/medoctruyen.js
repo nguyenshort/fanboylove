@@ -42,7 +42,14 @@ module.exports = class MeDocTruyen {
   async makeStory(create) {
     let story = await this.Leech.store.exist(this.source).story()
     if (!story && create) {
-      const avatar = this.Leech.getAttr(selector.avatar, 'src').single()
+      // avatar mặc định
+      let avatar = '/'
+      const avatarLink = this.Leech.getAttr(selector.avatar, 'src').single()
+      if (avatarLink) {
+        avatar = await this.Leech.downloadAvatar('http:' + avatarLink, {
+          Referer: selector.Referer
+        })
+      }
       const title = this.Leech.getText(selector.title).single()
       const team = this.Leech.getText(selector.team).single()
       const author = this.Leech.getText(selector.author).single()
@@ -73,6 +80,16 @@ module.exports = class MeDocTruyen {
     }
   }
 
+  async importChaptersShow(story, chapters) {
+    for (const chapter of chapters) {
+      const check = await this.Leech.store.exist(chapter).chapter()
+      if (!check) {
+        await this.reInit(chapter)
+        await this.importChapter(story)
+      }
+    }
+  }
+
   async importChapter(story) {
     const data = this.Leech.getHTML(selector.data).single()
     if (data) {
@@ -86,19 +103,19 @@ module.exports = class MeDocTruyen {
         }
       } = JSON.parse(data)
       const { chapter_title, chapter_index, elements } = detail_item
-      const content = elements.map((value) => {
-        return {
-          content: value.content
-        }
-      })
-      await this.Leech.store.insertChapter(
-        story._id,
-        chapter_title,
-        '',
-        content,
-        chapter_index,
-        this.source
-      )
+      if (elements.length) {
+        const content = await this.Leech.downloadListContent(elements, story, {
+          Referer: selector.Referer
+        })
+        await this.Leech.store.insertChapter(
+          story._id,
+          chapter_title,
+          '',
+          content,
+          chapter_index,
+          this.source
+        )
+      }
     }
   }
 }

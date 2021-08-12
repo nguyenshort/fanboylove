@@ -16,7 +16,8 @@ module.exports = new CronJob(
       if (chapters.length) {
         const story = await MeDocTruyen.makeStory()
         if (story) {
-          return MeDocTruyen.importChapters(
+          await MeDocTruyen.importChaptersShow(story, chapters)
+          /*return MeDocTruyen.importChapters(
             story,
             chapters,
             async (chapter, exist) => {
@@ -30,7 +31,7 @@ module.exports = new CronJob(
                 await deplay
               }
             }
-          )
+          )*/
         }
       }
     }

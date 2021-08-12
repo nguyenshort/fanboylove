@@ -21,7 +21,7 @@ router.get('/truyen-tranh/:slug.:id', async ({ params }, res) => {
 
 router.get(
   '/truyen-tranh/:slug.:id/:chap.:chapid',
-  async ({ params, cookies }, res, next) => {
+  async ({ params }, res, next) => {
     const StoryController = new storyController()
     const ChapterController = new chapterController()
     const [story, chapter] = await Promise.all([
@@ -39,8 +39,7 @@ router.get(
     res.render('chapter', {
       story,
       chapter,
-      chapters,
-      lightTheme: !!cookies.lightTheme
+      chapters
     })
   }
 )

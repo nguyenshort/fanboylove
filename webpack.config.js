@@ -2,7 +2,7 @@ require('dotenv').config()
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: './vue/app.js',
   resolve: {
     alias: {

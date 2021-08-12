@@ -9565,3 +9565,21 @@ input.crop-button {
   left: 0;
   top: 0;
 }
+body.manga-page:not(.text-ui-light) .profile-manga {
+  background-image: url(https://live.mangabooth.com/wp-content/themes/madara/images/bg-search.jpg);
+}
+.home-sidebar {
+  padding:50px 0px 10px 0px
+}
+body:not(.text-ui-light) .home-sidebar, body:not(.text-ui-light) .c-breadcrumb-wrapper {
+  background-image: url(https://live.mangabooth.com/wp-content/themes/madara/images/bg-search.jpg);
+}
+body.modal-open.text-ui-light .modal .modal-dialog {
+  background: #262626;
+}
+body.modal-open.text-ui-light label, body.modal-open.text-ui-light a {
+  color: #fff !important;
+}
+body.modal-open.text-ui-light .modal .modal-content {
+  border: 3px solid #9e9e9e;
+}
