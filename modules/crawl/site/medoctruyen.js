@@ -107,14 +107,16 @@ module.exports = class MeDocTruyen {
         const content = await this.Leech.downloadListContent(elements, story, {
           Referer: selector.Referer
         })
-        await this.Leech.store.insertChapter(
-          story._id,
-          chapter_title,
-          '',
-          content,
-          chapter_index,
-          this.source
-        )
+        if (content.length) {
+          await this.Leech.store.insertChapter(
+            story._id,
+            chapter_title,
+            '',
+            content,
+            chapter_index,
+            this.source
+          )
+        }
       }
     }
   }
