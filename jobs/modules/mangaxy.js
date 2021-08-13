@@ -16,21 +16,7 @@ module.exports = new CronJob(
       if (chapters.length) {
         const story = await Manga.makeStory()
         if (story) {
-          return Manga.importChapters(
-            story,
-            chapters,
-            async (chapter, exist, index) => {
-              if (!exist) {
-                const deplay = new Promise((resolve) =>
-                  setTimeout(() => {
-                    Event.mangaXY(story, chapter, index)
-                    resolve()
-                  }, 500)
-                )
-                await deplay
-              }
-            }
-          )
+          Event.mangaXYSlow(story, chapters)
         }
       }
     }

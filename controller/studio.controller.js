@@ -442,38 +442,18 @@ class StudioController {
       await Leech.init()
       const story = await Leech.makeStory(true)
       const chapters = Leech.chapters()
-      await Leech.importChapters(story, chapters, async (chapter, check) => {
-        if (!check) {
-          const deplay = new Promise((resolve) =>
-            setTimeout(() => {
-              Event.medoctruyen(story, chapter)
-              resolve()
-            }, 100)
-          )
-          await deplay
-        }
-      })
+      if (chapters.length) {
+        Event.medoctruyenSlow(story, chapters)
+      }
       return story
     } else {
       const Leech = new mangaxy(source)
       await Leech.init()
       const story = await Leech.makeStory(true)
       const chapters = Leech.chapters()
-      await Leech.importChapters(
-        story,
-        chapters,
-        async (chapter, check, index) => {
-          if (!check) {
-            const deplay = new Promise((resolve) =>
-              setTimeout(() => {
-                Event.mangaXY(story, chapter, index)
-                resolve()
-              }, 100)
-            )
-            await deplay
-          }
-        }
-      )
+      if (chapters.length) {
+        Event.mangaXYSlow(story, chapters)
+      }
       return story
     }
   }

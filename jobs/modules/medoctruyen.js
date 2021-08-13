@@ -1,6 +1,8 @@
 const CronJob = require('cron').CronJob
 const meDocTruyen = require('../../modules/crawl/site/medoctruyen')
 
+const Event = require('../../events')
+
 const SITE = 'https://www.medoctruyentranh.net/tim-truyen/dam-my/'
 module.exports = new CronJob(
   '0 */10 * * * *',
@@ -19,7 +21,7 @@ module.exports = new CronJob(
           if (chapters.length) {
             const story = await Leech.makeStory()
             if (story) {
-              await Leech.importChaptersShow(story, chapters)
+              Event.medoctruyenSlow(story, chapters)
             }
           }
           resolve()
@@ -32,19 +34,3 @@ module.exports = new CronJob(
   true,
   'Asia/Ho_Chi_Minh'
 )
-
-/*return MeDocTruyen.importChapters(
-            story,
-            chapters,
-            async (chapter, exist) => {
-              if (!exist) {
-                const deplay = new Promise((resolve) =>
-                  setTimeout(() => {
-                    Event.medoctruyen(story, chapter)
-                    resolve()
-                  }, 500)
-                )
-                await deplay
-              }
-            }
-          )*/

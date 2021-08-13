@@ -19,32 +19,26 @@ function updateChapterContent(_id, oldContent, content) {
   eventEmitter.emit('UPDATE_CHAPTER_CONTENT', _id, oldContent, content)
 }
 
-function nettruyen(story, source, order) {
-  eventEmitter.once('LEECH_NETTRUYEN', Leech.NetTruyen)
-  eventEmitter.emit('LEECH_NETTRUYEN', story, source, order)
-}
-
 function nettruyenSlow(story, chapters) {
   eventEmitter.once('LEECH_NETTRUYEN_SLOW', Leech.NetTruyenSlow)
   eventEmitter.emit('LEECH_NETTRUYEN_SLOW', story, chapters)
 }
 
-function medoctruyen(story, source) {
-  eventEmitter.once('LEECH_MEDOCTRUYEN', Leech.MeDocTruyen)
-  eventEmitter.emit('LEECH_MEDOCTRUYEN', story, source)
+function medoctruyenSlow(story, chapters) {
+  eventEmitter.once('LEECH_MDT_SLOW', Leech.MeDocTruyenSlow)
+  eventEmitter.emit('LEECH_MDT_SLOW', story, chapters)
 }
 
-function mangaXY(story, source, order) {
-  eventEmitter.once('LEECH_MANGAXY', Leech.MangaXY)
-  eventEmitter.emit('LEECH_MANGAXY', story, source, order)
+function mangaXYSlow(story, chapters) {
+  eventEmitter.once('LEECH_MANGAXY_SLOW', Leech.MangaXYSlow)
+  eventEmitter.emit('LEECH_MANGAXY_SLOW', story, chapters)
 }
 
 module.exports = {
   removeFile,
   clearChapterContent,
   updateChapterContent,
-  nettruyen,
-  medoctruyen,
+  medoctruyenSlow,
   nettruyenSlow,
-  mangaXY
+  mangaXYSlow
 }

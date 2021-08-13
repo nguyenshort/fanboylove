@@ -77,6 +77,16 @@ module.exports = class MangaXY {
     }
   }
 
+  async importChaptersShow(story, chapters) {
+    for (let i = 0; i < chapters.length; i++) {
+      const check = await this.Leech.store.exist(chapters[i]).chapter()
+      if (!check) {
+        await this.reInit(chapters[i])
+        await this.importChapter(story, i)
+      }
+    }
+  }
+
   async importChapter(story, order) {
     const name = this.Leech.getText(selector.name).single()
     const nameExtend = this.Leech.getText(selector.nameExtend).single()

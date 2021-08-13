@@ -20,9 +20,19 @@ module.exports = {
     return MeDocTruyen.importChapter(story)
   },
 
+  MeDocTruyenSlow: async (story, chapters) => {
+    const MeDocTruyen = new meDocTruyen()
+    return MeDocTruyen.importChaptersShow(story, chapters)
+  },
+
   MangaXY: async (story, source, order) => {
     const Manga = new mangaXY(source)
     await Manga.init()
     return Manga.importChapter(story, order)
+  },
+
+  MangaXYSlow: async (story, chapters) => {
+    const Manga = new mangaXY()
+    return Manga.importChaptersShow(story, chapters)
   }
 }
