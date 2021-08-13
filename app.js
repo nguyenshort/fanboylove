@@ -52,5 +52,7 @@ app.use(function (req, res) {
   return res.status(404).render('error')
 })
 
-require('./jobs')
+if (process.env.NODE_ENV === 'production') {
+  require('./jobs')
+}
 module.exports = app
