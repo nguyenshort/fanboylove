@@ -9571,7 +9571,7 @@ body.manga-page:not(.text-ui-light) .profile-manga {
 .home-sidebar {
   padding:50px 0px 10px 0px
 }
-body:not(.text-ui-light) .home-sidebar, body:not(.text-ui-light) .c-breadcrumb-wrapper {
+body:not(.text-ui-light) .home-sidebar, body:not(.text-ui-light):not(.reading-manga) .c-breadcrumb-wrapper {
   background-image: url(https://live.mangabooth.com/wp-content/themes/madara/images/bg-search.jpg);
 }
 body.modal-open.text-ui-light .modal .modal-dialog {
