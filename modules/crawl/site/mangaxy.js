@@ -42,13 +42,12 @@ module.exports = class MangaXY {
   async makeStory(create) {
     let story = await this.Leech.store.exist(this.source).story()
     if (!story && create) {
-      let avatar = '/'
-      const avatarLink = this.Leech.getAttr(selector.avatar, 'src').single()
-      if (avatarLink) {
-        avatar = await this.Leech.downloadAvatar('https:' + avatarLink, {
+      const avatar = await this.Leech.downloadAvatar(
+        'https:' + this.Leech.getAttr(selector.avatar, 'src').single(),
+        {
           Referer: selector.Referer
-        })
-      }
+        }
+      )
       const title = this.Leech.getText(selector.title)
         .single()
         .replace(/^\[.*]\s/, '')

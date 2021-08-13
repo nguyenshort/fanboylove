@@ -9583,3 +9583,6 @@ body.modal-open.text-ui-light label, body.modal-open.text-ui-light a {
 body.modal-open.text-ui-light .modal .modal-content {
   border: 3px solid #9e9e9e;
 }
+body.text-ui-light .quick-searck-result {
+  background: #262626;
+}
