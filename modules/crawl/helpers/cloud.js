@@ -1,8 +1,9 @@
+const https = require('https')
 const axios = require('axios')
 const { v4: uuidv4 } = require('uuid')
-const resize = require('./resize')
 const BunnyCDN = require('../../bunnyCDN')
-const https = require('https')
+
+const image = require('../../image/')
 
 module.exports = class {
   async downLoadImage(src, headers = {}) {
@@ -29,7 +30,8 @@ module.exports = class {
 
   async upload(secure, stream, path, width, height) {
     if (width) {
-      const data = await resize(stream, width, height)
+      const Image = new image(stream)
+      const data = await Image.resize(width, height)
       const Bunny = new BunnyCDN(secure)
       await Bunny.upload(data, path)
       return path

@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid')
 const bunnycdn = require('../modules/bunnyCDN')
 const Event = require('../events')
 
-const Image = require('../modules/Image')
+const Image = require('../modules/image')
 
 class UploadController {
   /**
