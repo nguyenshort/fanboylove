@@ -47,11 +47,7 @@ export default {
         const image = new window.Image()
         image.src = this.pic
         image.onload = () => {
-          const { width, height } = this.resizeImage(
-            image.naturalWidth,
-            image.naturalHeight,
-            this.width
-          )
+          const { width, height } = this.resizeImage(image.naturalWidth, image.naturalHeight, this.width)
           this.stageSize.width = width
           this.stageSize.height = height
           image.width = width

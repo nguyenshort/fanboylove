@@ -13,11 +13,7 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  extends: [
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:vue/recommended'
-  ],
+  extends: ['prettier', 'plugin:prettier/recommended', 'plugin:vue/recommended'],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
@@ -28,6 +24,12 @@ module.exports = {
     'handle-callback-err': 'off',
     'vue/no-v-html': 'off',
     'vue/max-attributes-per-line': 'off',
-    'vue/html-indent': 'off'
+    'vue/html-indent': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 100
+      }
+    ]
   }
 }

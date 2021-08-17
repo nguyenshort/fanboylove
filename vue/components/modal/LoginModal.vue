@@ -3,12 +3,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
@@ -20,45 +15,20 @@
             <p class="message login">
               {{ error }}
             </p>
-            <form
-              id="loginform"
-              name="loginform"
-              method="post"
-              @submit.prevent="login()"
-            >
+            <form id="loginform" name="loginform" method="post" @submit.prevent="login()">
               <p>
                 <label>Tên tài khoản * <br >
-                  <input
-                    v-model="email"
-                    type="text"
-                    name="log"
-                    class="input user_login"
-                    value=""
-                    size="20"
-                  >
+                  <input v-model="email" type="text" name="log" class="input user_login" value="" size="20" />
                 </label>
               </p>
               <p>
                 <label>Mật khẩu * <br >
-                  <input
-                    v-model="password"
-                    type="password"
-                    autocomplete=""
-                    name="pwd"
-                    class="input user_pass"
-                    value=""
-                    size="20"
-                  >
+                  <input v-model="password" type="password" autocomplete="" name="pwd" class="input user_pass" value="" size="20" />
                 </label>
               </p>
               <p />
               <p class="submit">
-                <input
-                  type="submit"
-                  name="wp-submit"
-                  class="button button-primary button-large wp-submit"
-                  value="Đăng Nhập"
-                >
+                <input type="submit" name="wp-submit" class="button button-primary button-large wp-submit" value="Đăng Nhập" />
               </p>
             </form>
             <p class="nav">
@@ -76,7 +46,7 @@
 </template>
 
 <script>
-import { SIGN_IN } from '../graphql/mutations'
+import { SIGN_IN } from '../../graphql/mutations'
 
 export default {
   name: 'LoginModal',

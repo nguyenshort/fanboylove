@@ -18,11 +18,7 @@
             <!--Update Avatar -->
             Nhấp để tải lên
             <label class="select-avata">
-              <input
-                type="file"
-                name="wp-manga-user-avatar"
-                @change="openCropImage($event)"
-              />
+              <input type="file" name="wp-manga-user-avatar" @change="openCropImage($event)" >
               <span class="file-name" />
             </label>
             <input
@@ -132,9 +128,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="new-password-input" class="col-md-3">
-            Mật Khẩu Mới
-          </label>
+          <label for="new-password-input" class="col-md-3"> Mật Khẩu Mới </label>
           <div class="col-md-9">
             <input
               id="new-password-input"
@@ -147,9 +141,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="comfirm-password-input" class="col-md-3">
-            Xác Nhận Mật Khẩu
-          </label>
+          <label for="comfirm-password-input" class="col-md-3"> Xác Nhận Mật Khẩu </label>
           <div class="col-md-9">
             <input
               id="comfirm-password-input"
@@ -187,12 +179,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
@@ -214,22 +201,13 @@
               />
             </div>
             <div class="list-button d-flex justify-content-center mt-3">
-              <div
-                class="crop-butotn-action"
-                @click="$refs.cropper.rotate(-90)"
-              >
+              <div class="crop-butotn-action" @click="$refs.cropper.rotate(-90)">
                 <i class="fas fa-undo" />
               </div>
-              <div
-                class="crop-butotn-action"
-                @click="$refs.cropper.relativeZoom(-0.2)"
-              >
+              <div class="crop-butotn-action" @click="$refs.cropper.relativeZoom(-0.2)">
                 <i class="fas fa-search-minus" />
               </div>
-              <div
-                class="crop-butotn-action"
-                @click="$refs.cropper.relativeZoom(0.2)"
-              >
+              <div class="crop-butotn-action" @click="$refs.cropper.relativeZoom(0.2)">
                 <i class="fas fa-search-plus" />
               </div>
               <div class="crop-butotn-action" @click="$refs.cropper.rotate(90)">
@@ -330,6 +308,7 @@ export default {
           const formData = new FormData()
           formData.append('image', data)
           formData.append('pathName', `users/${this.userData._id}/avatar`)
+          formData.append('type', 'user-avatar')
           this.$http
             .post('/upload/single', formData)
             .then(({ data }) => {

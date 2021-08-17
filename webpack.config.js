@@ -6,10 +6,7 @@ module.exports = {
   entry: './vue/app.js',
   resolve: {
     alias: {
-      vue:
-        process.env.NODE_ENV === 'production'
-          ? 'vue/dist/vue.min.js'
-          : 'vue/dist/vue.js'
+      vue: process.env.NODE_ENV === 'production' ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
     }
   },
   output: {

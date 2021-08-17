@@ -3,12 +3,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
@@ -20,58 +15,26 @@
             <p class="message register">
               {{ error }}
             </p>
-            <form
-              id="registerform"
-              name="registerform"
-              novalidate="novalidate"
-              @submit.prevent="signUp()"
-            >
+            <form id="registerform" name="registerform" novalidate="novalidate" @submit.prevent="signUp()">
               <p>
                 <label>Tên Hiển Thị * <br >
-                  <input
-                    v-model="name"
-                    type="text"
-                    name="user_sign-up"
-                    class="input user_login"
-                    value=""
-                    size="20"
-                  >
+                  <input v-model="name" type="text" name="user_sign-up" class="input user_login" value="" size="20" >
                 </label>
               </p>
               <p>
                 <label>Email * <br >
-                  <input
-                    v-model="email"
-                    type="email"
-                    name="email_sign-up"
-                    class="input user_email"
-                    value=""
-                    size="20"
-                  >
+                  <input v-model="email" type="email" name="email_sign-up" class="input user_email" value="" size="20" >
                 </label>
               </p>
               <p>
                 <label>Mật Khẩu *<br >
-                  <input
-                    v-model="password"
-                    type="password"
-                    name="pass_sign-up"
-                    autocomplete=""
-                    class="input user_pass"
-                    value=""
-                    size="25"
-                  >
+                  <input v-model="password" type="password" name="pass_sign-up" autocomplete="" class="input user_pass" value="" size="25" >
                 </label>
               </p>
               <p />
 
               <p class="submit">
-                <input
-                  type="submit"
-                  name="wp-submit"
-                  class="button button-primary button-large wp-submit"
-                  value="Đăng Ký"
-                >
+                <input type="submit" name="wp-submit" class="button button-primary button-large wp-submit" value="Đăng Ký" >
               </p>
             </form>
           </div>
@@ -83,7 +46,7 @@
 </template>
 
 <script>
-import { SIGN_UP } from '../graphql/mutations'
+import { SIGN_UP } from '../../graphql/mutations'
 
 export default {
   name: 'SignUpModal',

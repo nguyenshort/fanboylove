@@ -3,7 +3,6 @@
 	"short_name" : "Fanboylove" ,
 	"description" : "No More Straight",
 	"display": "fullscreen",
-	"start_url": "/",
 	"icons": [
 		{
 			"src": "/images/favicon/favicon-36.png",

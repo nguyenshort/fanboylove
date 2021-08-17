@@ -327,7 +327,7 @@ $(document).ready(function () {
 
   // Clear console log
   setTimeout(()=> {
-    console.clear()
+    // console.clear()
     console.log('%c🌈 Fanboylove%c.com\n%c~ No More Straight! ~', 'filter: invert(1); font-size: 28px; font-weight: bolder; font-family: "Rubik"; margin-top: 20px; margin-bottom: 8px;', 'color: #ff7755; font-size: 28px; font-weight: bolder; font-family: "Rubik"', 'color: #9bcdf1; font-size: 16px; font-family: "Rubik"; margin-bottom: 20px;');
   }, 100)
 

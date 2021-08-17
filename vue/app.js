@@ -16,19 +16,15 @@ Vue.component('VueCropper', VueCropper)
 import VueKonva from 'vue-konva'
 Vue.use(VueKonva)
 
+/**
+ * Single File Component
+ */
 Vue.component('LoopInfinite', require('./components/LoopInfinite.vue').default)
-Vue.component(
-  'CategoryInfinite',
-  require('./components/CategoryInfinite.vue').default
-)
-Vue.component(
-  'SearchInfinite',
-  require('./components/SearchInfinite.vue').default
-)
-
+Vue.component('CategoryInfinite', require('./components/CategoryInfinite.vue').default)
+Vue.component('SearchInfinite', require('./components/SearchInfinite.vue').default)
 Vue.component('SearchHeader', require('./components/SearchHeader.vue').default)
-Vue.component('LoginModal', require('./components/LoginModal.vue').default)
-Vue.component('SignUpModal', require('./components/SignUpModal.vue').default)
+Vue.component('LoginModal', require('./components/modal/LoginModal.vue').default)
+Vue.component('SignUpModal', require('./components/modal/SignUpModal.vue').default)
 Vue.component('RelatedManga', require('./components/RelatedManga.vue').default)
 Vue.component('TabBar', require('./components/settings/TabBar.vue').default)
 Vue.component('ChapterView', require('./components/ChapterView.vue').default)
