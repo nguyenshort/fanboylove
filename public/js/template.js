@@ -334,4 +334,11 @@ $(document).ready(function () {
   /*document.querySelector('.btn-reverse-order').addEventListener('click', () => {
     document.querySelector('body').classList.toggle('-in-order')
   })*/
+
+  document.querySelectorAll('.chapter-img').forEach((element, index) => {
+    element.addEventListener('error', () => {
+      console.log('Error image', index)
+      element.remove()
+    })
+  })
 })
