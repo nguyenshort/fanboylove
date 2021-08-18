@@ -15,7 +15,7 @@ const selector = {
   images: '.reading-detail .page-chapter img'
 }
 
-module.exports = class {
+module.exports = class NetTruyen {
   constructor(source) {
     this.Leech = new crawlController()
     this.source = source
@@ -78,44 +78,48 @@ module.exports = class {
     }
   }
 
+  /**
+   * Update sử dụng promise để tăng tốc leech
+   * @param story
+   * @param chapters
+   * @returns {Promise<void>}
+   */
   async importChaptersShow(story, chapters) {
+    let list = []
     for (let i = 0; i < chapters.length; i++) {
       const check = await this.Leech.store.exist(chapters[i]).chapter()
       if (!check) {
-        await this.reInit(chapters[i])
-        await this.importChapter(story, i)
+        if (i % 10 !== 0) {
+          list.push(
+            new Promise(async (resolve) => {
+              const leech = new NetTruyen(chapters[i])
+              await leech.init()
+              await leech.importChapter(story, i)
+              resolve()
+            })
+          )
+        } else if (list.length) {
+          await Promise.all(list)
+          list = []
+        }
       }
     }
   }
 
   async importChapter(story, order) {
-    const name = this.Leech.getText(selector.name)
-      .single()
-      .replace(/^-/, '')
-      .trim()
+    const name = this.Leech.getText(selector.name).single().replace(/^-/, '').trim()
     if (name) {
       // lấy list image và build thành link
       const listImages = this.Leech.getAttr(selector.images, 'src')
         .array()
         .map((value) => (/^(http|https)/.test(value) ? value : 'http:' + value))
       if (listImages.length) {
-        const content = await this.Leech.downloadListContent(
-          listImages,
-          story,
-          {
-            Referer: selector.Referer
-          }
-        )
+        const content = await this.Leech.downloadListContent(listImages, story, {
+          Referer: selector.Referer
+        })
         if (content.length) {
           try {
-            await this.Leech.store.insertChapter(
-              story._id,
-              name,
-              '',
-              content,
-              order,
-              this.source
-            )
+            return this.Leech.store.insertChapter(story._id, name, '', content, order, this.source)
           } catch (e) {
             console.log(e)
             await this.Leech.cloud.removeMany(content)
