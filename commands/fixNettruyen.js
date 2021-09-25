@@ -24,7 +24,7 @@ async function f() {
       }
     )*/
     // Story.findByIdAndDelete(story._id)
-    console.log('Done ', avatar)
+    // console.log('Done ', avatar)
   }
   console.log('Done')
 }
