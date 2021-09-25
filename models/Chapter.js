@@ -62,6 +62,24 @@ const ChapterSchema = new mongoose.Schema({
   source: {
     type: String,
     index: true
+  },
+  // for chapter premium
+  lock: {
+    type: Number,
+    default: 0,
+    enum: [0, 1, 2]
+  },
+  coin: {
+    type: Number,
+    default: null
+  },
+  question: {
+    type: String,
+    default: ''
+  },
+  answer: {
+    type: String,
+    default: ''
   }
 })
 

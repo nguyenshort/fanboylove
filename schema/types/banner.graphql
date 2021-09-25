@@ -1,0 +1,6 @@
+type Banner {
+    _id: Float
+    image: String
+    storyID: Float
+    title: String
+}

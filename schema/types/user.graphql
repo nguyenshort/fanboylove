@@ -2,6 +2,9 @@ type User {
     _id: Float!
     name: String
     email: String!
+    coin: Int
+    fastPass: Int
+    exp: Int
     role: String!
     avatar: String!
     createdAt: Float

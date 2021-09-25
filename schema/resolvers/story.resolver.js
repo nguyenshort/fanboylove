@@ -14,12 +14,7 @@ module.exports = {
 
     getStoriesWithChapter: async (_, { order, page, limit }) => {
       const StoryController = new storyController()
-      const stories = await StoryController.getManyWithChapter(
-        order,
-        page,
-        limit,
-        2
-      )
+      const stories = await StoryController.getManyWithChapter(order, page, limit, 2)
       Object.values(stories).map((value) => {
         value.story.avatar = BunnyCDN.webAssets(value.story.avatar)
         return value
@@ -33,12 +28,7 @@ module.exports = {
       if (!category) {
         throw new ForbiddenError('Catgory không tồn tại')
       }
-      const stories = await CategoryController.categoryGetBooks(
-        id,
-        order,
-        page,
-        limit
-      )
+      const stories = await CategoryController.categoryGetBooks(id, order, page, limit)
       Object.values(stories).map((value) => {
         value.story.avatar = BunnyCDN.webAssets(value.story.avatar)
         return value

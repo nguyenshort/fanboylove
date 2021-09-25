@@ -1,0 +1,33 @@
+type Query {
+    "Home App"
+    appGetBanner: [Banner]
+    appGetEditorChoice(limit: Int!): [EditorChoice]
+
+    "Categories"
+    appGetManyCategories(page: Int, limit: Int!): [Category]
+    appGetCategories: [AppCategory]
+
+    "Story"
+    appGetStory(id: Float!): Story
+    appGetChapters(id: Float!): [Chapter]
+    appCheckBookmak(story: Float!): UserBookmark
+
+    "Stories"
+    appGetRankings(order: String!, page: Int!, limit: Int!): [Story]
+
+    "Category"
+    appGetCategory(id: Float!): Category
+    appCategoryGetStory(id: Float!, order: String!, page: Int!, limit: Int!): [Story]
+
+    "search"
+    appSearchStories(keyword: String! page: Int!, limit: Int!): [Story]
+
+    "Chapter"
+    appGetBasicStory(id: Float): Story
+    appGetChapter(id: Float): Chapter
+    appGetPurchased(id: Float): ChapterPurchased
+}
+
+type Mutation {
+    appBookmark(story: Float): BookmarkStory
+}

@@ -1,10 +1,9 @@
-const Crawl = require('../index')
+const Crawl = require('../site/nettruyen')
 ;(async function () {
-  const test = await Crawl.downLoadImage(
-    'http://anhnhanh.com/data/images/14692/288647/001.jpg?data=net',
-    {
-      Referer: 'http://www.nettruyenvip.com/'
-    }
+  const test = new Crawl(
+    'http://www.nettruyenpro.com/truyen-tranh/nghich-tap-chi-hao-dung-nhan-sinh-35943'
   )
-  console.log(test)
+  await test.init()
+  const link = test.Leech.getAttr('.col-image img', 'src').single()
+  console.log(link.replace(/^http(s)?:\/\//, ''))
 })()

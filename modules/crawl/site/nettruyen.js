@@ -3,12 +3,12 @@ const crawlController = require('../index')
 const selector = {
   chapters: '#item-detail .chapter a',
   avatar: '.col-image img',
-  Referer: 'http://www.nettruyenvip.com/',
+  Referer: 'http://www.nettruyenpro.com/',
   title: '#item-detail h1.title-detail',
   content: '.detail-content p',
   categories: '.list-info .kind .col-xs-8 a',
   author: '.list-info .author .col-xs-8',
-  site: 'http://www.nettruyenvip.com/tim-truyen/dam-my',
+  site: 'http://www.nettruyenpro.com/tim-truyen/dam-my',
   stories: '.items .item .image a',
 
   name: '.reading .top .txt-primary span',
@@ -47,9 +47,12 @@ module.exports = class NetTruyen {
       let avatar = '/'
       const avatarLink = this.Leech.getAttr(selector.avatar, 'src').single()
       if (avatarLink) {
-        avatar = await this.Leech.downloadAvatar('http:' + avatarLink, {
-          Referer: selector.Referer
-        })
+        avatar = await this.Leech.downloadAvatar(
+          /^(http|https)/.test(avatarLink) ? avatarLink : 'http:' + value,
+          {
+            Referer: selector.Referer
+          }
+        )
       }
       const content = this.Leech.getText(selector.content).single()
       const listCate = this.Leech.getText(selector.categories).array()

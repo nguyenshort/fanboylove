@@ -19,30 +19,27 @@ router.get('/truyen-tranh/:slug.:id', async ({ params }, res) => {
   })
 })
 
-router.get(
-  '/truyen-tranh/:slug.:id/:chap.:chapid',
-  async ({ params }, res, next) => {
-    const StoryController = new storyController()
-    const ChapterController = new chapterController()
-    const [story, chapter] = await Promise.all([
-      StoryController.getOne(parseInt(params.id)),
-      ChapterController.getOne(parseInt(params.chapid))
-    ])
-    if (!chapter || !chapter) {
-      return res.redirect('/404')
-    }
-    chapter.avatar = BunnyCDN.webAssets(chapter.avatar)
-    chapter.content.map((value) => {
-      value.content = BunnyCDN.webAssets(value.content, true)
-    })
-    const chapters = await ChapterController.getMany(story._id)
-    res.render('chapter', {
-      story,
-      chapter,
-      chapters
-    })
+router.get('/truyen-tranh/:slug.:id/:chap.:chapid', async ({ params }, res, next) => {
+  const StoryController = new storyController()
+  const ChapterController = new chapterController()
+  const [story, chapter] = await Promise.all([
+    StoryController.getOne(parseInt(params.id)),
+    ChapterController.getOne(parseInt(params.chapid))
+  ])
+  if (!chapter || !chapter) {
+    return res.redirect('/404')
   }
-)
+  chapter.avatar = BunnyCDN.webAssets(chapter.avatar)
+  chapter.content.map((value) => {
+    value.content = BunnyCDN.webAssets(value.content, true)
+  })
+  const chapters = await ChapterController.getMany(story._id)
+  res.render('chapter', {
+    story,
+    chapter,
+    chapters
+  })
+})
 
 router.get('/truyen-tranh', async ({ query }, res, next) => {
   const StoryController = new storyController()

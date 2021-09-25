@@ -15,6 +15,18 @@ const UserSchema = new mongoose.Schema({
     index: true,
     trim: true
   },
+  coin: {
+    type: Number,
+    default: 0
+  },
+  fastPass: {
+    type: Number,
+    default: 0
+  },
+  exp: {
+    type: Number,
+    default: 0
+  },
   password: {
     type: String,
     required: true,

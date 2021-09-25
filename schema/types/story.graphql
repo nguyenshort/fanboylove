@@ -10,6 +10,7 @@ type Story {
     countChapter: Int
     rating: Float
     views: Float
+    bookmarks: Float
     categories: [Category]
     updatedAt: Float
     createdAt: Float
@@ -35,12 +36,31 @@ type Chapter {
     postActive: Int
     publishTime: Float
     note: String
+
+    lock: Int
+    coin: Int
+    question: String
+    answer: String
 }
 
 type Category {
     _id: Float
     name: String
     slug: String
+    image: String
+}
+
+type EditorChoice {
+    _id: Float
+    story: Story
+    badge: String
+    image: String
+}
+
+type AppCategory {
+    category: Category
+    count: Int
+    stories: [Story]
 }
 
 scalar Object
@@ -48,4 +68,27 @@ scalar Object
 type StoryAndChapter {
     story: Story
     chapters: [Chapter]
+}
+
+
+"For app"
+type UserBookmark {
+    _id: Float
+    story: Story
+    user: User
+    createdAt: Float
+}
+
+type BookmarkStory {
+    story: Story
+    bookmark: UserBookmark
+    user: User
+}
+
+
+type ChapterPurchased {
+    _id: Float
+    purchased: [String]
+    story: Story
+    user: User
 }

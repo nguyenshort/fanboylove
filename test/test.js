@@ -1,15 +1,12 @@
 require('dotenv').config({ path: '../.env' })
-const axios = require('axios')
-const https = require('https')
+const db = require('../database')
+db.connect()
+const Banner = require('../models/Tag')
 
 ;(async () => {
-  const data = await axios.get('http://truyengroup.net/data/images/27158/542762/001-fix.jpg?data=net', {
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: false
-    }),
-    headers: {
-      Referer: 'http://www.nettruyenvip.com/'
+  const banner = Banner.insertMany([
+    {
+      name: ''
     }
-  })
-  console.log(data)
+  ])
 })()
