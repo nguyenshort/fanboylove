@@ -23,7 +23,7 @@ async function f() {
         Referer: 'http://www.nettruyenpro.com/'
       }
     )
-    Story.findByIdAndUpdate(story._id, { avatar })
+    await Story.findByIdAndUpdate(story._id, { avatar })
     console.log(story.title)
     console.log('Done ', avatar)
   }
