@@ -17,14 +17,14 @@ async function f() {
     await Nettruyen.init()
     const link = Nettruyen.Leech.getAttr('.col-image img', 'src').single()
     console.log(story.title)
-    /*const avatar = await Nettruyen.Leech.downloadAvatar(
+    const avatar = await Nettruyen.Leech.downloadAvatar(
       /^(http|https)/.test(link) ? link : 'http:' + value,
       {
         Referer: 'http://www.nettruyenpro.com/'
       }
-    )*/
-    // Story.findByIdAndDelete(story._id)
-    // console.log('Done ', avatar)
+    )
+    Story.findByIdAndUpdate(story._id, { avatar })
+    console.log('Done ', avatar)
   }
   console.log('Done')
 }
