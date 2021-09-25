@@ -24,6 +24,7 @@ async function f() {
       }
     )
     Story.findByIdAndUpdate(story._id, { avatar })
+    console.log(story.title)
     console.log('Done ', avatar)
   }
   console.log('Done')
